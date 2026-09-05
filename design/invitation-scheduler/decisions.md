@@ -68,6 +68,13 @@ B단계(발산·수렴) 산출물 템플릿. 산출물 루트로 복사해서 �
 | 제작 후 스냅샷 | `.cache/nodes-after.json` — Plugin API로 계산한 사실 파일(위반 목록·카운트·인벤토리). MCP 출력 20KB 제한으로 원본 트리 전체 대신 계산 결과를 저장 |
 | 렌더 | `renders/r1-S01..S11.png`(C 1.0 입력, 토큰 조정 전) · `renders/r1.1-S01..S11.png`(A-0·데이터 정합 수정 후) |
 
+### 화면별 C단계 시도 횟수
+
+| 화면 | C 시도 | 상태 |
+|---|---|---|
+| S01~S11 (ZVyw 파일) | 1 (1.0) | PASS |
+| S01~S11 (xMsSA 파일) | 1 (1.3) | FAIL — C-2a/2b/2c (C-5 사람 판결 대기, C-6 PASS) |
+
 ### 검증 로그 — 하위 라운드
 
 > 국소 수정 재검과 A단계 재검은 B단계를 거치지 않으므로 라운드가 늘지 않는다.
@@ -79,6 +86,7 @@ B단계(발산·수렴) 산출물 템플릿. 산출물 루트로 복사해서 �
 | 1.0 | 최초 제작 (renders/r1-*.png, 토큰 조정 전 사실 계산) | **제작자 사전 계산(검증자 판정 아님)**: A-0 대비율 위반 61건 — 소프트 배경 위 12~13px 라벨(waiting #C98A1C on #FBEFD6 2.58, bride #C2607A on #F7E3E9 3.26, both 3.4, done 3.1, confirmed 4.21, danger 4.2, brand 4.35), tertiary #9C928A on white 3.05 ; A-0 넘침 1건 S10 status-tabs 5번째 칩(x 342~412) ; A-3 off-grid 3건(gap -10, -6, -6) ; A-1/A-2/A-5 위반 0 ; A-4 231/561=41.2% (<70%) | **C 검증 Agent(격리 컨텍스트) 판정 원문**: C-2a 흐름 PASS — "각 화면의 주 CTA 문구가 바로 다음 단계를 명시하고, S04→S05→S06의 대상(서연 대학 동기·후보 9/12·9/13·9/20)과 S07→S08→S10의 대상(도윤 직장 동료·9/14 19:30)이 화면 간 동일하게 이어진다" / C-2b 마무리 PASS — "11장 전체에서 미완성 플레이스홀더·잘린 텍스트·겹침·빈 박스·정렬 어긋남 없음 … S10 상단 필터 칩 우측 '다…' 절단은 가로 스크롤 칩 행의 관례적 잘림" / C-2c 측 구분 PASS — "신랑(도윤)=파랑, 신부(서연)=핑크, 양가=베이지/탠 3색 체계가 전 화면에서 유지됨 … S11 게스트 화면에서도 도(파랑)/서(핑크) 유지, 타 커플 민·현은 무채색" / C-5 맥락 적합 PASS — "웜 오프화이트 배경·벽돌색 프라이머리 단일 톤, 그라데이션·장식 일러스트·과한 카드 중첩 없음 … 범용 SaaS 대시보드 인상 없음" / C-6 까다로운 경우 PASS — ① 중복 소속 S02 서지민 행 태그 2개·S03 헬퍼·S04 파란 안내 박스+세그먼트+'중복 소속' 라벨 ② 늦은 회신·마감 S05 마감 칩·S06 'D-2', 미회신 회색 대시, 비활성 CTA·S07 '마감 지남' 배너+분기 버튼·S01·S10 ③ 겹침 S01 빨간 카드·S05 9/20 행 빨간 테두리·S09 '모임 2건'+빨간 박스+두 카드·S11 같은 날 경고 / C-1·C-3·C-4 SKIP(판단기준 미기재) / **종합: 통과**. 참고 관찰(판정 아님): "S07 상단 노란 박스는 미회신 2명을 '최민재, 한지훈'으로 명시하는데 … 1위 후보 카드에는 아바타 최·정·이·한이 가능 인원으로 표시되고, S08 … 최민재가 '확인함'으로 나온다" ; "S01 '다가오는 모임'에는 9/20 상견례(D-15)만 보이고 … 9/16 강태양 1:1(D-11)이 더 가까운 일정임에도 나오지 않는다" ; "S06 매트릭스가 다른 화면보다 촘촘하다" ; "S10은 '전체 7'인데 카드 3장 아래로 여백만 남고" | C 통과 · A는 제작자 사전 계산에서 A-0 FAIL 예상 → 1.1로 수정 |
 | 1.1 | A-0 국소 수정: 토큰 8개 값 어둡게(대비율), S10 5번째 칩 제거→탭 행 2줄 wrap+'전체 7' 복원, gap -10/-6→-8 · C 참고 관찰 반영: S07 순위 카드 아바타→오·신·문·배, S08 구성원·확인 현황 이름 정합, S10 카드 아바타 정합, S01 카드→가장 가까운 확정 모임(강태양 1:1 9/16) · 렌더 r1.1 | (A 검증 Agent 판정 대기 — 아래 행에 원문 기입) | (재검 미실시 — C 1.0 통과 유지, 변경은 데이터 정합·색 명도만) | 대기 |
 | 1.2 | A-4 국소 수정: 반복 패턴 4종 컴포넌트 승격(Layout/SectionHeader ×5, Card/StatusTile ×4, List/AckRow ×4, Action/ShareTile ×3) → 인스턴스 치환. 사실 파일 v1.2 재계산: A-0 대비율 위반 0(비활성 버튼 라벨 1건 면제 표기), 넘침 0, A-1/2/3/5 위반 0, A-4 232/517=**0.449** (<0.70) | **BLOCKED** — A 재검 Agent가 조직 월 한도(HTTP 429)로 중단, 판정 없음. 자동 재시도 안 함 | 미실시 | BLOCKED · 미해결 결정: "A-4 산식(REUSE-A)·하한 70% 재확인", "검증 Agent 재개(한도 리셋 후)" |
+| 1.3 | design-verify 정식 검증 (합병 하네스, 대상 `xMsSA…` 03 Screens 11화면, 사실 파일 `.cache/facts-xmssa-r2.json`, 렌더 `renders/r2-S01..S11.png`, 격리: 프롬프트 지시) | **A 검증 Agent 판정 원문(요약 없음은 GATE 아래 첨부 참조) — 종합 불통과.** A-F FAIL: 사용자 설정·역할 진입 화면 0(커플 연결·게스트 랜딩 없음), 프로토타입 reactions 0, S11 "제출하기" 도착 화면 없음, `Tag/Side` 인스턴스 0(측 태그 화면 미사용), §3 5셀 검증불가(S05 마감 선택·S01 할 일 2건·S05 겹침 라벨·S01 1:1). A-T CE1~7 검증 불가(요구 계약에 CE 없음). A-0 FAIL: 대비율 28건 전부 `text/tertiary #78706A`(subtle 위 4.03, canvas 위 4.40), 넘침 5건(S09 카드 y802, S10 카드 y698·882·1066·1250 — scroll_containers 미선언), 프레임 규격 4건(S04 858·S07 752·S08 752·S11 890). A-1 PASS(25색 일치·바인딩 100%). A-2 FAIL 1(S11 guest-header/subtitle 16px 미스타일). A-3 FAIL 스코프 내 2(S01 couple-avatars gap -10, S08 place-row gap 6) + 마스터 결함 60(Calendar/Day marks gap 2 ×60). A-4 FAIL 0.432(174/403, 3회 연속 미달). A-5 PASS. A-6 PASS(required 7행 전부). A-7 이모지 PASS / 문구 기호 FAIL 55건(가운뎃점 다수, 분수 슬래시 3/5·4/5, em dash 1, Response/Cell pending "–" ×6은 문자 아이콘; 날짜 슬래시는 C-7 이관). A-8 FP1~3 PASS, FP4~6 검증불가. A-9 IC1·IC6 PASS. **3축 소계**: ① Fail / ② 검증불가(부분 Pass) / ③ Fail+검증불가. **기준 오류 의심 4건**: grid 4 vs 캘린더 점 gap 2(38% 집중) / 가운뎃점·날짜 슬래시 한국어 UI 관례(35% 집중) / text/tertiary 토큰 값 자체 / A-4 70%가 REUSE-A에서 실현 가능한가 | **Critic → Advocate → PM 초안.** 확정 5행: C-2a 흐름 **FAIL**(Critic 근거 F-11 "9/20 겹침이 서연 대학 동기 날짜와 불일치"는 Advocate가 반박 — 9/20은 상견례·도윤 대학 동기의 겹침이며 S05가 20일을 기존 일정 점으로 표시. 대신 F-17 양가 상견례 구성원이 S08 "도서양양" vs S09 "지하미나세", F-29 윤하늘 S02 "배정됨" vs S04 "미배정", F-30 S02 목록에 장미소·김나래 없음, F-31 조은별(1:1)이 S06 단체 매트릭스에, F-36 "최다 가능 3명"인데 매트릭스 열마다 2명, F-37 미회신 2명인데 "가능 4/5"로 FAIL 유지) / C-2b 마무리 **FAIL**(F-1 S05·S09 달력 12·19·26 글리프 절단, F-2 S09 5셀 테두리 파편, F-3 S04 배너 2행 잘림, F-4 S05 후보 3행 3px만 보임, F-5 S08 "박서연 부모님" 절반 절단 + 아래 170px 공백, F-7 S06 헤더 x133/181/229 vs 필 x125/143/161 대응 불가 — Blocker) / C-2c 측 구분 **FAIL**(F-8 S08 아바타 "양·양" 텍스트 없음, F-9 S06·S07 헤더에 측 라벨 없음 — S04·S10엔 있어 적용 누락) / C-5 맥락 적합 **Advocate 뒤집기 권고 → PM 초안 PASS(조건부)**: Critic "S01 2×2 KPI=범용 대시보드"에 대해 라벨이 도메인 고유(회신 대기/확정 대기/확정/다녀옴)·D-77·이번 주말 모임·겹침 할 일이 맥락 특화라 반박. 남는 것은 KPI 카드 탭 어포던스 없음(Minor)과 F-27 "이번 주말 모임"에 9/12~19 후보 표시(오늘 9/5 기준 오류) / C-6 **PASS**(S04 배너, S07 마감 배너, S09·S11 겹침). **후보 렌즈 OBSERVE**(판정 아님): (a) 상시 요소 약함·그룹 헤더 20px ≈ 카드 제목 18px (b) 상태 칩 채도만 차이, 미회신 행은 물러남이 아니라 튀어나옴 (c) 카드당 정지점 8~9개·전 카드 상태 라벨 부착 (d) 아바타 5개 전부 나열, 3/5 의미 라벨 없음 (e) S10 아바타 모임 측과 무관하게 전부 핑크 (h) 색 부호화 범례 0 (k) 이니셜 "서"×4·"지하미나세"×5 반복, 요일 오류 9/7(일)·9/20(토) (l) 관리자 용어 톤 (m) 가운뎃점 전 화면 (n) S06·S07·S01·S11 3초 초과 (o) 정렬 축 4~5·간격 5종+ (p) 높이 불일치. 추가 발견 F-32 S04 배너 "대학 동기 모임과 겹쳐요"가 편성 중인 모임 자신을 가리킴(자기참조) | **PM 초안(사람 판결 대기)**: fix — F-1~F-5·F-7(잘림·정합 Blocker/Major), F-8·F-9(측 라벨), F-17·F-27~F-31·F-36·F-37(더미 데이터 정합 → `docs/screen-map.md` §4 fixtures 재정비 후 화면 반영), A-0 대비율(토큰 1개 값), A-0 넘침·규격, A-2, A-3 스코프 내 2 + Calendar/Day 마스터, A-F 프로토타입 연결·S12 제출 완료 화면·Tag/Side 배치 ; accept — F-11(반박), F-15(반박), F-19·F-20·F-23·F-26 Minor ; defer/사람 — A-F 역할 진입·커플 연결 화면(요구 계약 변경 → LOCK-I 상태라 **UNLOCK-I 요청**), 기준 오류 의심 4건, C-5 최종 판정, 렌즈 13항목 승격. **라우팅**: 반복 실패 아님(1.0 C PASS → 1.3 C FAIL, 같은 항목 반복 아님) / 결정충돌 1건(A-4 하한 vs 산식 → 사람 재확인, 기존 미해결) / 방향 오류 아님 / **국소 결함 다수 + 데이터 정합 수정** → 하위 1.4 |
 
 ### 인수인계 GATE 블록
 
@@ -140,6 +148,36 @@ output_refs: ["WF/* 컴포넌트 세트 7종 59:8 59:15 59:22 59:27 59:45 59:53 
 status: PASS
 blockers: ["3막 순서 뒤집힘 — W는 U(03 Screens)에서 역추출한 것이라 U와 1:1 대응은 보장되지만 W가 흐름의 원장이 되려면 인터뷰 후 W→U 방향으로 수정해야 함", "W는 xMsSA…에, 검증된 U는 ZVyw…에 있음 — 제출본 파일 결정 필요"]
 next_stage: interview
+```
+
+```yaml
+stage: verify-A
+mode: improve
+project_id: invitation-scheduler
+run_id: 2026-09-05-r1
+revision: "1.3"
+producer: subagent-a-review-isolated-3 (신규 컨텍스트, 프롬프트 지시 격리)
+target_ref: xMsSA6ndIWBXEANJ0Ycphf / 03 Screens (18:4)
+input_refs: [design/invitation-scheduler/.cache/facts-xmssa-r2.json, "design/invitation-scheduler/brief.md#A단계 기준값", "docs/screen-map.md §2·§3", references/stage-a-structural.md]
+output_refs: ["decisions.md 검증 로그 1.3 A 판정 원문"]
+status: FAIL
+blockers: ["A-F 역할 진입·커플 연결 화면 부재 → 요구 계약 변경 필요(LOCK-I → UNLOCK-I 요청)", "A-T 핵심경험 정의 없음(contracts/requirements.json 미작성) → 검증 불가", "기준 오류 의심 4건: grid 4 vs 점 gap 2 / 가운뎃점·날짜 슬래시 / text/tertiary 값 / A-4 70% 산식", "제출본 파일 결정"]
+next_stage: fix → verify-A (1.4)
+```
+
+```yaml
+stage: verify-C
+mode: improve
+project_id: invitation-scheduler
+run_id: 2026-09-05-r1
+revision: "1.3"
+producer: subagent-c-critic-isolated-1 + subagent-c-advocate-isolated-1 (각각 신규 컨텍스트) → PM 초안 master, 최종 판결 사람 대기
+target_ref: xMsSA6ndIWBXEANJ0Ycphf / 03 Screens (18:4)
+input_refs: [design/invitation-scheduler/renders/r2-S01..S11.png, "brief.md 판단기준 원장 확정 5행(C-2a/2b/2c/5/6)"]
+output_refs: ["decisions.md 검증 로그 1.3 C 판정 원문(Critic F-1~26, Advocate 판정·F-27~38, PM 초안)"]
+status: FAIL
+blockers: ["C-5 최종 판정(Critic FAIL vs Advocate PASS 권고) — 사람 판결", "렌즈 13항목 합격선 승격 — 묶음 질문 대기", "F-11·F-15 반박 수용 여부"]
+next_stage: fix → verify-C (1.4)
 ```
 
 ### 오버라이드 로그 — 사람이 Agent 판정을 뒤집은 사건
