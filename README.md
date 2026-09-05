@@ -12,7 +12,8 @@ VIBE MAFIA CLUB 하네스톤 2회차(2026-09-05)를 계기로 이너서클 코�
 - **코어(범용 절차)** — `.claude/skills/oss-design-harness/SKILL.md`, `templates/`, `scripts/harness/`. 게이트·모드·0/B/제작/A/C/V 단계·GATE 인수인계·라우팅·상한이 채워져 있습니다. **판단기준 값은 여전히 비어 있습니다(TODO)** — 그것은 프로젝트 원장에서 사람이 채웁니다. 코어에는 특정 프로젝트의 화면명·상태·색이 들어가면 안 되고, `scripts/harness/check_contracts.py`가 검사합니다.
 - **프로젝트(과제 산출물)** — `docs/projects/<id>/project.json`이 진입점입니다.
   - `invitation-scheduler` 청첩장모임 스케줄러: `docs/prd.md` → `docs/screen-map.md` → `design/invitation-scheduler/`(원장·결정·검증 로그) → Figma 파일(원장 `brief.md` target 참조). 하네스톤 2회차 팀4 과제.
-  - `docs/backlog/saju/` 사주 풀이: **보류 중**(사용자 결정 2026-09-05). 리허설용 fixture PRD·도메인 메모·설정을 모아 두었고, 재개 시 `docs/projects/saju/`로 옮겨 검사기 대상에 넣습니다.
+  - `family-trip` 가족 여행 관리 앱: **두 번째 도메인(리허설, plan-only)**. `docs/projects/family-trip/`에 fixture PRD·도메인 메모·설정. target·무드가 확정되면 build. 코어가 도메인을 바꿔도 그대로 굴러가는지 확인하는 용도입니다.
+  - `docs/backlog/saju/` 사주 풀이: **보류**(사용자 결정 2026-09-05, 가족 여행으로 대체). 재개 시 `docs/projects/saju/`로 옮기면 검사기 대상에 들어갑니다.
 - 배운 것은 `docs/harness-lessons.md`에, 다음 개선 계획은 `docs/PLAN-design-harness.md`에 있습니다.
 
 ## 프레임워크 — 4단계 판단 구조

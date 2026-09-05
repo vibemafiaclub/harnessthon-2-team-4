@@ -36,5 +36,5 @@
     "wireframe_page": "W Wireframes",
     "ui_page": "03 Screens"
   },
-  "status": "backlog — 사용자 지시(2026-09-05): 사주 지침은 나중에 시도. docs/projects/에서 분리해 검사기 기본 대상에서 제외. 재개 시 docs/projects/saju/로 옮기고 check_contracts.py saju 실행."
+  "status": "backlog — 사용자 지시(2026-09-05): 사주 대신 가족 여행 관리 앱(family-trip)으로 진행. 사주는 보류. docs/projects/에서 분리해 검사기 기본 대상에서 제외. 재개 시 docs/projects/saju/로 옮기고 check_contracts.py saju 실행."
 }

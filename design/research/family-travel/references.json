@@ -1,0 +1,583 @@
+{
+  "schema_version": "1.0",
+  "scope": "research-only",
+  "family_assumption": "다세대 가족 여행 — 응답 대기 중 잠정 조사 범위; 확정 요구 아님",
+  "references": [
+    {
+      "reference_id": "REF-FW-01",
+      "product": "FamilyWall",
+      "task": "가족 이벤트 상세",
+      "platform": "mobile image",
+      "version": null,
+      "accessed_at": "2026-09-05",
+      "evidence": [
+        {
+          "id": "E-01",
+          "kind": "official-marketing-image",
+          "source_url": "https://www.familywall.com/",
+          "original_url": "https://www.familywall.com/static-Family/img/EN/Block2-Img2-Right_Full%402x.png",
+          "local_path": ".cache/familywall-calendar.png",
+          "region": "원본 전체; 앱 UI 주장은 기기 내부 또는 제품 화면에 한정",
+          "observation": "제목·일시·참여자 아바타·지도·댓글 입력을 한 이벤트 상세에 모음",
+          "limitation": "촬영 버전 미상. 클릭과 날짜 데이터 정합은 검증하지 않음"
+        }
+      ],
+      "claims": [
+        {
+          "id": "CL-01",
+          "text": "제목·일시·참여자 아바타·지도·댓글 입력을 한 이벤트 상세에 모음",
+          "evidence_ids": [
+            "E-01"
+          ],
+          "review": "UNVERIFIED"
+        }
+      ],
+      "review": {
+        "collector": "root",
+        "reviewer": null,
+        "status": "not-reviewed",
+        "report_path": null,
+        "isolation": null
+      },
+      "recommendation": {
+        "decision": "adopt",
+        "scope": "참여자·장소·대화를 같은 일정에 연결"
+      },
+      "human_decision": {
+        "decision": "pending",
+        "actor": null,
+        "reason_verbatim": null,
+        "scope": null
+      },
+      "patterns": []
+    },
+    {
+      "reference_id": "REF-FW-02",
+      "product": "FamilyWall",
+      "task": "식사 계획",
+      "platform": "mobile image",
+      "version": null,
+      "accessed_at": "2026-09-05",
+      "evidence": [
+        {
+          "id": "E-02",
+          "kind": "store-image",
+          "source_url": "https://play.google.com/store/apps/details?id=com.familywall",
+          "original_url": "https://play-lh.googleusercontent.com/CTlLjYZJdedlVtic_MKhKWj0Ej6eMefdaIJW8xcOvDNlarLYCKml24nR3NXPqHbZGZWVlnBCxuFB6MdPKiU-=w1200",
+          "local_path": ".cache/familywall-tasks.png",
+          "region": "원본 전체; 앱 UI 주장은 기기 내부 또는 제품 화면에 한정",
+          "observation": "날짜별로 아침·점심·저녁 카드와 추가 제어를 배치",
+          "limitation": "파일명 tasks는 수집 당시 이름이며 실제 내용은 Meal Plan. 주방 레시피 기능 채택 아님"
+        }
+      ],
+      "claims": [
+        {
+          "id": "CL-02",
+          "text": "날짜별로 아침·점심·저녁 카드와 추가 제어를 배치",
+          "evidence_ids": [
+            "E-02"
+          ],
+          "review": "UNVERIFIED"
+        }
+      ],
+      "review": {
+        "collector": "root",
+        "reviewer": null,
+        "status": "not-reviewed",
+        "report_path": null,
+        "isolation": null
+      },
+      "recommendation": {
+        "decision": "hold",
+        "scope": "식사 시간을 하루 일정 안에 구분하는 방식만 보조 참조"
+      },
+      "human_decision": {
+        "decision": "pending",
+        "actor": null,
+        "reason_verbatim": null,
+        "scope": null
+      },
+      "patterns": []
+    },
+    {
+      "reference_id": "REF-CZ-01",
+      "product": "Cozi",
+      "task": "가족별 일정 구분",
+      "platform": "mobile image",
+      "version": null,
+      "accessed_at": "2026-09-05",
+      "evidence": [
+        {
+          "id": "E-03",
+          "kind": "official-marketing-image",
+          "source_url": "https://www.cozi.com/feature-overview/",
+          "original_url": "https://www.cozi.com/wp-content/uploads/2016/02/Calendar-Family-New-Colors.png",
+          "local_path": ".cache/cozi-calendar.png",
+          "region": "원본 전체; 앱 UI 주장은 기기 내부 또는 제품 화면에 한정",
+          "observation": "일정의 색 점과 기기 외부 가족 사진을 선으로 연결한 설명 이미지",
+          "limitation": "저해상도·기울어진 목업. URL 2016/02는 화면 버전 확정 근거가 아님"
+        }
+      ],
+      "claims": [
+        {
+          "id": "CL-03",
+          "text": "일정의 색 점과 기기 외부 가족 사진을 선으로 연결한 설명 이미지",
+          "evidence_ids": [
+            "E-03"
+          ],
+          "review": "UNVERIFIED"
+        }
+      ],
+      "review": {
+        "collector": "root",
+        "reviewer": null,
+        "status": "not-reviewed",
+        "report_path": null,
+        "isolation": null
+      },
+      "recommendation": {
+        "decision": "adopt",
+        "scope": "멤버 식별과 일정 참가 범위 표시"
+      },
+      "human_decision": {
+        "decision": "pending",
+        "actor": null,
+        "reason_verbatim": null,
+        "scope": null
+      },
+      "patterns": []
+    },
+    {
+      "reference_id": "REF-CZ-02",
+      "product": "Cozi",
+      "task": "오늘 대시보드",
+      "platform": "mobile image",
+      "version": null,
+      "accessed_at": "2026-09-05",
+      "evidence": [
+        {
+          "id": "E-04",
+          "kind": "official-marketing-image",
+          "source_url": "https://www.cozi.com/feature-overview/",
+          "original_url": "https://www.cozi.com/wp-content/uploads/2016/02/Cozi-Home.jpg",
+          "local_path": ".cache/cozi-today.png",
+          "region": "원본 전체; 앱 UI 주장은 기기 내부 또는 제품 화면에 한정",
+          "observation": "다가오는 일정과 장보기·할 일 구역이 한 화면에 배치됨",
+          "limitation": "최신 시각 스타일 기준으로는 보류. 작은 글자의 정확한 수치·동작 미검증"
+        }
+      ],
+      "claims": [
+        {
+          "id": "CL-04",
+          "text": "다가오는 일정과 장보기·할 일 구역이 한 화면에 배치됨",
+          "evidence_ids": [
+            "E-04"
+          ],
+          "review": "UNVERIFIED"
+        }
+      ],
+      "review": {
+        "collector": "root",
+        "reviewer": null,
+        "status": "not-reviewed",
+        "report_path": null,
+        "isolation": null
+      },
+      "recommendation": {
+        "decision": "adopt",
+        "scope": "오늘 일정과 준비할 일의 요약"
+      },
+      "human_decision": {
+        "decision": "pending",
+        "actor": null,
+        "reason_verbatim": null,
+        "scope": null
+      },
+      "patterns": []
+    },
+    {
+      "reference_id": "REF-CZ-03",
+      "product": "Cozi",
+      "task": "개인·목적별 목록",
+      "platform": "mobile image",
+      "version": null,
+      "accessed_at": "2026-09-05",
+      "evidence": [
+        {
+          "id": "E-05",
+          "kind": "official-marketing-image",
+          "source_url": "https://www.cozi.com/feature-overview/",
+          "original_url": "https://www.cozi.com/wp-content/uploads/2016/02/list-of-lists.jpg",
+          "local_path": ".cache/cozi-lists.png",
+          "region": "원본 전체; 앱 UI 주장은 기기 내부 또는 제품 화면에 한정",
+          "observation": "사람 이름과 목적이 다른 목록 카드들을 세로로 나열",
+          "limitation": "체크·담당 변경 동작 미검증"
+        }
+      ],
+      "claims": [
+        {
+          "id": "CL-05",
+          "text": "사람 이름과 목적이 다른 목록 카드들을 세로로 나열",
+          "evidence_ids": [
+            "E-05"
+          ],
+          "review": "UNVERIFIED"
+        }
+      ],
+      "review": {
+        "collector": "root",
+        "reviewer": null,
+        "status": "not-reviewed",
+        "report_path": null,
+        "isolation": null
+      },
+      "recommendation": {
+        "decision": "adopt",
+        "scope": "사람별·공용 준비물 목록 구분"
+      },
+      "human_decision": {
+        "decision": "pending",
+        "actor": null,
+        "reason_verbatim": null,
+        "scope": null
+      },
+      "patterns": []
+    },
+    {
+      "reference_id": "REF-TT-01",
+      "product": "TimeTree",
+      "task": "공유 월간 달력",
+      "platform": "mobile image",
+      "version": null,
+      "accessed_at": "2026-09-05",
+      "evidence": [
+        {
+          "id": "E-06",
+          "kind": "official-help-image",
+          "source_url": "https://support.timetreeapp.com/hc/en-us/articles/900004492623-How-to-use-shared-calendar-app",
+          "original_url": "https://support.timetreeapp.com/hc/article_attachments/55758672657817",
+          "local_path": ".cache/timetree-calendar.png",
+          "region": "원본 전체; 앱 UI 주장은 기기 내부 또는 제품 화면에 한정",
+          "observation": "월 달력과 일정 라벨, Events/Album/Add/Activity/Memo 제어가 보임",
+          "limitation": "빨간 번호·테두리는 도움말 주석. 여행 당일의 기본 화면으로 자동 채택하지 않음"
+        }
+      ],
+      "claims": [
+        {
+          "id": "CL-06",
+          "text": "월 달력과 일정 라벨, Events/Album/Add/Activity/Memo 제어가 보임",
+          "evidence_ids": [
+            "E-06"
+          ],
+          "review": "UNVERIFIED"
+        }
+      ],
+      "review": {
+        "collector": "root",
+        "reviewer": null,
+        "status": "not-reviewed",
+        "report_path": null,
+        "isolation": null
+      },
+      "recommendation": {
+        "decision": "adopt",
+        "scope": "여행 날짜를 고르는 전체 일정 맥락"
+      },
+      "human_decision": {
+        "decision": "pending",
+        "actor": null,
+        "reason_verbatim": null,
+        "scope": null
+      },
+      "patterns": []
+    },
+    {
+      "reference_id": "REF-TT-02",
+      "product": "TimeTree",
+      "task": "일정 상세와 댓글",
+      "platform": "mobile image",
+      "version": null,
+      "accessed_at": "2026-09-05",
+      "evidence": [
+        {
+          "id": "E-07",
+          "kind": "official-help-image",
+          "source_url": "https://support.timetreeapp.com/hc/en-us/articles/203005559-How-to-attach-images-and-comment-events-after-creating-an-event",
+          "original_url": "https://support.timetreeapp.com/hc/article_attachments/36758013540377",
+          "local_path": ".cache/timetree-comments.png",
+          "region": "원본 전체; 앱 UI 주장은 기기 내부 또는 제품 화면에 한정",
+          "observation": "제목·시작/종료 시간과 하단 사진·댓글 입력이 같은 화면에 있음",
+          "limitation": "2026 문서 안 2023 예시 화면. 직접 전송·읽음·변경 동작 미검증"
+        }
+      ],
+      "claims": [
+        {
+          "id": "CL-07",
+          "text": "제목·시작/종료 시간과 하단 사진·댓글 입력이 같은 화면에 있음",
+          "evidence_ids": [
+            "E-07"
+          ],
+          "review": "UNVERIFIED"
+        }
+      ],
+      "review": {
+        "collector": "root",
+        "reviewer": null,
+        "status": "not-reviewed",
+        "report_path": null,
+        "isolation": null
+      },
+      "recommendation": {
+        "decision": "adopt",
+        "scope": "일정별 의사소통"
+      },
+      "human_decision": {
+        "decision": "pending",
+        "actor": null,
+        "reason_verbatim": null,
+        "scope": null
+      },
+      "patterns": []
+    },
+    {
+      "reference_id": "REF-WL-01",
+      "product": "Wanderlog",
+      "task": "여행 계획·지도·초대",
+      "platform": "web",
+      "version": null,
+      "accessed_at": "2026-09-05",
+      "evidence": [
+        {
+          "id": "E-08",
+          "kind": "official-help-image",
+          "source_url": "https://help.wanderlog.com/hc/en-us/articles/4625495771163-Add-friends-to-plan-together",
+          "original_url": "https://help.wanderlog.com/hc/article_attachments/13364360420763",
+          "local_path": ".cache/wanderlog-plan.png",
+          "region": "원본 전체; 앱 UI 주장은 기기 내부 또는 제품 화면에 한정",
+          "observation": "웹에서 계획 영역과 지도 병렬, 여행 제목 근처 참여자 추가 아이콘",
+          "limitation": "2023 도움말. 모바일 분할 레이아웃 근거가 아님. 추천 장소와 여행 목적지 불일치도 있음"
+        }
+      ],
+      "claims": [
+        {
+          "id": "CL-08",
+          "text": "웹에서 계획 영역과 지도 병렬, 여행 제목 근처 참여자 추가 아이콘",
+          "evidence_ids": [
+            "E-08"
+          ],
+          "review": "UNVERIFIED"
+        }
+      ],
+      "review": {
+        "collector": "root",
+        "reviewer": null,
+        "status": "not-reviewed",
+        "report_path": null,
+        "isolation": null
+      },
+      "recommendation": {
+        "decision": "adopt",
+        "scope": "계획과 지도 연결·여행 단위 초대"
+      },
+      "human_decision": {
+        "decision": "pending",
+        "actor": null,
+        "reason_verbatim": null,
+        "scope": null
+      },
+      "patterns": []
+    },
+    {
+      "reference_id": "REF-WL-02",
+      "product": "Wanderlog",
+      "task": "일별 장소와 이동",
+      "platform": "mobile image",
+      "version": null,
+      "accessed_at": "2026-09-05",
+      "evidence": [
+        {
+          "id": "E-09",
+          "kind": "official-help-image",
+          "source_url": "https://help.wanderlog.com/hc/en-us/articles/5159565134875-See-time-and-distance-between-places",
+          "original_url": "https://help.wanderlog.com/hc/article_attachments/5159564695451/IMG_8465F10FD67E-1.jpeg",
+          "local_path": ".cache/wanderlog-transit.png",
+          "region": "원본 전체; 앱 UI 주장은 기기 내부 또는 제품 화면에 한정",
+          "observation": "날짜 선택, 번호 순 장소, 사이의 이동 수단·시간·거리·Directions",
+          "limitation": "주황 손그림은 주석. 교통 추정 정확성·변경 동작 미검증"
+        }
+      ],
+      "claims": [
+        {
+          "id": "CL-09",
+          "text": "날짜 선택, 번호 순 장소, 사이의 이동 수단·시간·거리·Directions",
+          "evidence_ids": [
+            "E-09"
+          ],
+          "review": "UNVERIFIED"
+        }
+      ],
+      "review": {
+        "collector": "root",
+        "reviewer": null,
+        "status": "not-reviewed",
+        "report_path": null,
+        "isolation": null
+      },
+      "recommendation": {
+        "decision": "adopt",
+        "scope": "일정 사이 이동을 독립 항목으로 표현"
+      },
+      "human_decision": {
+        "decision": "pending",
+        "actor": null,
+        "reason_verbatim": null,
+        "scope": null
+      },
+      "patterns": []
+    },
+    {
+      "reference_id": "REF-WL-03",
+      "product": "Wanderlog",
+      "task": "오프라인 저장 식별",
+      "platform": "mobile image",
+      "version": null,
+      "accessed_at": "2026-09-05",
+      "evidence": [
+        {
+          "id": "E-10",
+          "kind": "official-help-image",
+          "source_url": "https://help.wanderlog.com/hc/en-us/articles/13545182856859-Download-trip-plan-for-offline-access",
+          "original_url": "https://help.wanderlog.com/hc/article_attachments/13545181532187",
+          "local_path": ".cache/wanderlog-offline.png",
+          "region": "원본 전체; 앱 UI 주장은 기기 내부 또는 제품 화면에 한정",
+          "observation": "여행 목록의 제목·날짜·참여자 옆 다운로드 아이콘",
+          "limitation": "2023 문서의 Pro 기능. 최신 동기화·오프라인 동작 미검증"
+        }
+      ],
+      "claims": [
+        {
+          "id": "CL-10",
+          "text": "여행 목록의 제목·날짜·참여자 옆 다운로드 아이콘",
+          "evidence_ids": [
+            "E-10"
+          ],
+          "review": "UNVERIFIED"
+        }
+      ],
+      "review": {
+        "collector": "root",
+        "reviewer": null,
+        "status": "not-reviewed",
+        "report_path": null,
+        "isolation": null
+      },
+      "recommendation": {
+        "decision": "adopt",
+        "scope": "여행별 다운로드 준비 상태 표시"
+      },
+      "human_decision": {
+        "decision": "pending",
+        "actor": null,
+        "reason_verbatim": null,
+        "scope": null
+      },
+      "patterns": []
+    },
+    {
+      "reference_id": "REF-WL-04",
+      "product": "Wanderlog",
+      "task": "간결 보기 전환",
+      "platform": "web",
+      "version": null,
+      "accessed_at": "2026-09-05",
+      "evidence": [
+        {
+          "id": "E-11",
+          "kind": "official-help-image",
+          "source_url": "https://help.wanderlog.com/hc/en-us/articles/13356092870427-Itinerary-compact-view",
+          "original_url": "https://help.wanderlog.com/hc/article_attachments/13364441812507",
+          "local_path": ".cache/wanderlog-compact.png",
+          "region": "원본 전체; 앱 UI 주장은 기기 내부 또는 제품 화면에 한정",
+          "observation": "상단의 Compact view 전환 제어와 툴팁",
+          "limitation": "전환 후 목록은 이 이미지에서 보이지 않음. 웹 기능 설명"
+        }
+      ],
+      "claims": [
+        {
+          "id": "CL-11",
+          "text": "상단의 Compact view 전환 제어와 툴팁",
+          "evidence_ids": [
+            "E-11"
+          ],
+          "review": "UNVERIFIED"
+        }
+      ],
+      "review": {
+        "collector": "root",
+        "reviewer": null,
+        "status": "not-reviewed",
+        "report_path": null,
+        "isolation": null
+      },
+      "recommendation": {
+        "decision": "hold",
+        "scope": "탐색용 사진 보기와 실행용 간결 보기의 구분"
+      },
+      "human_decision": {
+        "decision": "pending",
+        "actor": null,
+        "reason_verbatim": null,
+        "scope": null
+      },
+      "patterns": []
+    },
+    {
+      "reference_id": "REF-TI-01",
+      "product": "TripIt",
+      "task": "예약 일정 타임라인",
+      "platform": "mobile image",
+      "version": null,
+      "accessed_at": "2026-09-05",
+      "evidence": [
+        {
+          "id": "E-12",
+          "kind": "store-image",
+          "source_url": "https://play.google.com/store/apps/details?hl=en-US&id=com.tripit",
+          "original_url": "https://play-lh.googleusercontent.com/muPrIgh5jN6qS_hPywT90z3RGvP9GWqNiJZP4LaqVXe6G6C06TZpD7qb8cx01yv-Vob56cuOlZ2TyLlGjqPnAAk=w1200",
+          "local_path": ".cache/tripit-timeline.png",
+          "region": "원본 전체; 앱 UI 주장은 기기 내부 또는 제품 화면에 한정",
+          "observation": "항공·호텔·렌터카 아이콘과 시간·시간대·상태·예약정보가 세로선에 연결됨",
+          "limitation": "기울어진 홍보 목업·일부 잘림. 예약 표시 순서가 시간순으로 완벽하다는 증거 아님"
+        }
+      ],
+      "claims": [
+        {
+          "id": "CL-12",
+          "text": "항공·호텔·렌터카 아이콘과 시간·시간대·상태·예약정보가 세로선에 연결됨",
+          "evidence_ids": [
+            "E-12"
+          ],
+          "review": "UNVERIFIED"
+        }
+      ],
+      "review": {
+        "collector": "root",
+        "reviewer": null,
+        "status": "not-reviewed",
+        "report_path": null,
+        "isolation": null
+      },
+      "recommendation": {
+        "decision": "adopt",
+        "scope": "예약 유형별 요약과 시간대 표시"
+      },
+      "human_decision": {
+        "decision": "pending",
+        "actor": null,
+        "reason_verbatim": null,
+        "scope": null
+      },
+      "patterns": []
+    }
+  ]
+}

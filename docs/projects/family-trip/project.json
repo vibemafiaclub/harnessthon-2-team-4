@@ -1,0 +1,56 @@
+{
+  "$comment": "가족 여행 관리 앱 — 두 번째 도메인(사주 대신, 사용자 결정 2026-09-05). PRD는 리허설용 fixture이며 제품 확정본이 아니다. target 없음 → plan-only(M·W막)만 가능. target·기준이 확정되면 build.",
+  "schema_version": 1,
+  "project_id": "family-trip",
+  "display_name": "가족 여행 관리 앱 (리허설)",
+  "status": "active — plan-only",
+  "prd_path": "docs/projects/family-trip/prd.md",
+  "domain_doc_path": "docs/projects/family-trip/domain.md",
+  "screen_map_path": null,
+  "brief_path": "design/family-trip/brief.md",
+  "decisions_path": "design/family-trip/decisions.md",
+  "system_brief_path": "design/family-trip/_system/brief.md",
+  "artifact_root": "design/family-trip",
+  "task_skill": null,
+  "fixture_base_date": "2026-09-05",
+  "domain_terms": [
+    "여행",
+    "일정표",
+    "숙소",
+    "항공",
+    "경비",
+    "정산",
+    "짐",
+    "가족 구성원",
+    "부모님",
+    "지훈",
+    "민서",
+    "제주",
+    "짐 목록",
+    "총무",
+    "동행 가족"
+  ],
+  "forbidden_inherited_terms_from": "invitation-scheduler",
+  "interview": {
+    "audiences": [
+      "여행 총무(일정·예약·경비를 맡는 가족 구성원)",
+      "동행 가족(일정을 보고 의견·짐·경비를 입력하는 구성원)"
+    ],
+    "min_per_audience": 1,
+    "skill": "ooo-interview",
+    "skill_doc": "docs/integrations/ooo-interview.md",
+    "log_path": "design/family-trip/interview.md"
+  },
+  "process": {
+    "acts": [
+      "M",
+      "W",
+      "I",
+      "U"
+    ],
+    "wireframe_html_dir": "design/family-trip/wireframes-html",
+    "wireframe_page": "W Wireframes",
+    "ui_page": "03 Screens"
+  },
+  "notes": "invitation-scheduler의 색·상태 enum·화면명·인명 유입 금지(검사기가 확인). 절차·템플릿·네이밍 형식만 상속. 토큰 값은 M막 후 새로 정한다."
+}
