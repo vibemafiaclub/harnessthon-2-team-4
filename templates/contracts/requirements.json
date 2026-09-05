@@ -1,28 +1,33 @@
 {
-  "$comment": "요구 계약 양식 — PRD 원문 위치 → REQ → 화면/상태 매핑. V단계(V-1/V-2/V-4)의 입력. 프로젝트별 사본은 design/<project-id>/contracts/requirements.json. 값은 전부 예시 자리표시자다. 합병(2026-09-05): A-F 기능 커버리지(feat/yj1) + A-T 핵심경험 추적성(iceberg CE-n) 필드 추가. 이식(2026-09-05): core_experiences[]는 references/experience-definition.md가, screens[]·flow.edges[]·edge_states_planned[]는 references/screen-specification.md가 채운다.",
-  "schema_version": 1,
+  "$comment": "요구 계약 v2 양식 — PRD 원문 위치 → REQ → CE → 화면/블록/전이 매핑. A-F·A-T·V단계의 입력. 프로젝트별 사본은 design/<project-id>/contracts/requirements.json. 값은 전부 예시 자리표시자다. v2(2026-09-05, PLAN-design-process-import.md §5): personas[]·adjacent_experiences[]·*_refs·blocks[]·flow.paths[]·evidence 추가. 검사기 scripts/harness/check_contracts.py가 ID 중복·dangling ref·양방향 누락을 잡는다. v1 계약도 읽히지만 v2 필드는 미작성으로 남는다 — 과거 완료 단계를 소급 PASS시키지 않는다.",
+  "schema_version": 2,
+  "revision": "<라운드.하위라운드 — decisions.md GATE의 revision과 같은 값>",
   "project_id": "<project-id>",
   "prd_path": "docs/<...>/prd.md",
   "prd_hash": "<sha256 of prd file>",
+
   "requirements": [
     {
+      "$comment": "PRD 원문의 위치와 인용. CE 본문을 여기 복제하지 않는다 — CE 정본은 core_experiences[]이고 여기는 REQ로만 참조된다.",
       "id": "REQ-01",
       "prd_ref": "§4-1",
       "text_verbatim": "<PRD 원문 그대로>",
-      "kind": "feature | core_experience | tricky_case",
+      "kind": "feature | tricky_case",
       "screens": [
         "SCR-01"
       ],
       "states": [],
-      "status": "confirmed",
-      "source_kind": "사람-원문",
+      "status": "confirmed | candidate",
+      "source_kind": "사람-원문 | 실측 | 사람-해석 | 가정(위임) | 차단",
       "coverage": {
+        "$comment": "계획이 아니라 독립 검증 결과로만 갱신한다. node_id가 채워졌다는 사실만으로 status를 올리지 않는다.",
         "screens_present": null,
         "status": "✅ | ⚠️ | ❌ | 검증불가",
         "evidence_nodes": []
       }
     }
   ],
+
   "tricky_cases": [
     {
       "id": "CASE-01",
@@ -34,79 +39,31 @@
       "evidence_nodes": []
     }
   ],
+
   "states": [
     {
+      "$comment": "도메인 상태 enum(업무 상태). edge_states_planned[]의 화면 로딩 상태와는 다른 축이다 — A-F가 이것을, screen-specification.md가 저것을 본다.",
       "id": "STATE-01",
       "code": "<enum value>",
       "label": "<표시 라벨>",
-      "source_kind": "사람-원문|사람-해석",
+      "source_kind": "사람-원문 | 사람-해석",
       "must_appear": true
     }
   ],
-  "screens": [
-    {
-      "$comment": "references/screen-specification.md 산출. name은 W와 U가 같은 S<nn>을 쓴다 — 두 벌로 매기면 추적성 매트릭스가 갈라진다. node_id는 W막에서 null로 두고 U막 제작-S가 채운다.",
-      "id": "SCR-01",
-      "name": "<Sxx 화면명>",
-      "purpose": "",
-      "entry_from": [],
-      "primary_cta_to": "SCR-02",
-      "supports_ce": [],
-      "blocks": [
-        {
-          "$comment": "W막 §4 블록 구조. priority는 CE 우선순위가 아니라 personas[].behaviors[].frequency에서 나온다. P0는 화면당 1개 권장 + 스크롤 없는 영역(CE4).",
-          "order": 1,
-          "name": "",
-          "role": "",
-          "priority": "P0 | P1 | P2 | 고정",
-          "needed_component": null,
-          "destructive": false
-        }
-      ],
-      "alignment_axes_planned": null,
-      "spacing_kinds_planned": null,
-      "node_id": null,
-      "assumption_ref": null
-    }
-  ],
-  "assumptions": [
-    {
-      "id": "ASM-01",
-      "text": "",
-      "chosen_by": "사용자|에이전트",
-      "needs_confirmation": "high|medium|low"
-    }
-  ],
-  "core_experiences": [
-    {
-      "$comment": "references/experience-definition.md 산출. 0단계에서 status=candidate로 만들고, I막 승격(LOCK-I) 후 confirmed. Primary는 source_kind가 사람-원문 또는 실측이어야 한다 — 사람-해석만으로는 Primary 불가.",
-      "id": "CE-01",
-      "priority": "primary | secondary",
-      "status": "candidate | confirmed",
-      "promoted_by": null,
-      "promoted_ref": "<LOCK-I 근거 원문 위치>",
-      "statement": "<유저가 무엇을 하려 하는가>",
-      "success_condition_observable": "<화면 상태로 관찰 가능한 조건 — 내면 상태 금지>",
-      "source_kind": "사람-원문 | 실측 | 사람-해석",
-      "evidence_labels": [
-        "<원문 위치 또는 레퍼런스 증거 경로>"
-      ],
-      "screens": [],
-      "evidence_nodes": [],
-      "flow_depth_taps": null
-    }
-  ],
+
   "personas": [
     {
-      "$comment": "references/experience-definition.md §1. PRD가 요구하는 모든 역할을 넣는다 — 역할 하나를 Primary로 접어 다른 역할의 요구를 누락하지 않는다(PLAN-design-process-import.md §3). behaviors[].frequency가 W막 블록 위계(P0/P1/P2)의 1차 기준이다.",
+      "$comment": "references/experience-definition.md §1. PRD가 요구하는 모든 역할을 넣는다 — 역할 하나를 Primary로 접어 다른 역할의 요구를 누락하지 않는다(PLAN §3). behaviors[].frequency가 W막 블록 위계(P0/P1/P2)의 1차 기준이다.",
       "id": "PER-01",
-      "priority": "primary | secondary",
       "label": "<역할 기반 라벨>",
-      "context": "",
-      "need": "",
-      "constraint": "",
-      "failure_scenario": "",
+      "context": "<언제·어디서·어떤 상태로 쓰는가>",
+      "need": "<표면 요구 아래의 근본 욕구>",
+      "constraint": "<시간·주의력·환경·숙련도의 한계>",
+      "failure_scenario": "<목적을 달성하지 못하면 무슨 일이 생기는가>",
       "source_kind": "사람-원문 | 실측 | 사람-해석",
+      "source_refs": [
+        "<PRD §n | 레퍼런스 증거 경로>"
+      ],
       "behaviors": [
         {
           "action": "",
@@ -116,9 +73,14 @@
       ]
     }
   ],
+
   "adjacent_experiences": [
     {
-      "$comment": "references/experience-definition.md §4. flow_link가 비면 이 제품의 관심사가 아니므로 지운다. 'before' 항목이 CE의 Entry와 W막 진입 화면의 근거다.",
+      "$comment": "references/experience-definition.md §4. flow_link가 비면 이 제품의 관심사가 아니므로 지운다. kind=before 항목이 CE의 Entry와 W막 진입 화면의 근거다.",
+      "id": "ADJ-01",
+      "persona_refs": [
+        "PER-01"
+      ],
       "kind": "before | after | alongside | substitute | adjacent_domain",
       "experience": "",
       "flow_link": "<유저 흐름과의 연결 관계 — 필수>",
@@ -126,6 +88,78 @@
       "source_kind": "사람-원문 | 실측 | 사람-해석"
     }
   ],
+
+  "core_experiences": [
+    {
+      "$comment": "references/experience-definition.md 산출이자 CE의 정본. 0단계에서 status=candidate로 만들고 I막 승격(LOCK-I) 후 confirmed + approval_ref. priority=primary는 source_kind가 사람-원문 또는 실측이어야 한다 — 사람-해석만으로는 primary 불가.",
+      "id": "CE-01",
+      "priority": "primary | secondary",
+      "status": "candidate | confirmed",
+      "statement": "<유저는 ___하고 싶다>",
+      "success_condition_observable": "<___했을 때 ___를 확인할 수 있으면 성공 — 관찰 가능한 화면 상태로. 내면 상태 금지>",
+      "persona_refs": [
+        "PER-01"
+      ],
+      "requirement_refs": [
+        "REQ-01"
+      ],
+      "source_kind": "사람-원문 | 실측 | 사람-해석",
+      "source_refs": [
+        "<PRD §n | 레퍼런스 증거 경로>"
+      ],
+      "approval_ref": null,
+      "screens": [
+        "SCR-01"
+      ],
+      "evidence_nodes": [],
+      "flow_depth_taps": null
+    }
+  ],
+
+  "screens": [
+    {
+      "$comment": "references/screen-specification.md 산출. name은 W막과 U막이 같은 S<nn>을 쓴다 — 두 벌로 매기면 추적성 매트릭스가 갈라진다. node_id는 계획 단계에서 null이 정상이고 U막 제작-S가 채운다. 채워졌다는 사실만으로 PASS를 주지 않는다.",
+      "id": "SCR-01",
+      "name": "<Sxx 화면명>",
+      "purpose": "<이 화면에서 유저가 달성하는 것 — 한 문장>",
+      "primary_persona_ref": "PER-01",
+      "ce_refs": [
+        "CE-01"
+      ],
+      "entry_from": [],
+      "primary_cta_to": "SCR-02",
+      "blocks": [
+        {
+          "$comment": "W막 블록 구조. priority는 CE 우선순위가 아니라 personas[].behaviors[].frequency에서 나온다. 절차 기본값은 화면당 P0 1개 + 스크롤 없는 영역이며, 확정 합격선은 brief.md A단계 기준값이다.",
+          "id": "BLK-01",
+          "purpose": "<이 블록의 역할>",
+          "priority": "P0 | P1 | P2 | 고정",
+          "destructive": false,
+          "node_id": null
+        }
+      ],
+      "required_component_refs": [
+        "<contracts/components.json의 컴포넌트 id>"
+      ],
+      "fixture_refs": [
+        "<더미 데이터 경로 또는 키 — 실명·Lorem ipsum 금지>"
+      ],
+      "alignment_axes_planned": null,
+      "spacing_kinds_planned": null,
+      "node_id": null,
+      "assumption_ref": null
+    }
+  ],
+
+  "assumptions": [
+    {
+      "id": "ASM-01",
+      "text": "",
+      "chosen_by": "사용자 | 에이전트",
+      "needs_confirmation": "high | medium | low"
+    }
+  ],
+
   "setup_points": {
     "$comment": "A-F: 사용자별 값(역할·소속·기준일·상대)을 처음 정하는 화면과 되돌릴 경로가 있어야 한다",
     "user_values": [
@@ -137,34 +171,68 @@
     ],
     "role_entry_points": [
       {
-        "role": "<역할>",
+        "persona_ref": "PER-01",
         "first_screen": null,
         "how_arrived": null,
         "navigation_differs": null
       }
     ]
   },
+
   "flow": {
-    "$comment": "A-F: 시작(데이터 생성 폼)·중간(다음 버튼 목적지)·끝(완료 결과 화면) 세 지점 + 프로토타입 reactions",
+    "$comment": "A-F: 시작(데이터 생성 폼)·중간(다음 버튼 목적지)·끝(완료 결과 화면). edges는 전이 하나씩, paths는 역할·CE별 완결 경로다. CE5(플로우 깊이)는 paths[].edge_refs의 길이로 계산한다 — 화면 수를 세지 않는다.",
     "edges": [
       {
+        "id": "EDG-01",
         "from": "SCR-01",
         "cta": "<버튼 문구>",
         "to": "SCR-02",
+        "kind": "forward | back | cancel | branch",
+        "condition": "<분기 조건 — 없으면 null>",
+        "effect": "<이 전이가 바꾸는 상태 — 없으면 null>",
+        "trigger_node_id": null,
         "prototype_connected": false,
         "expressed_only": true
+      }
+    ],
+    "paths": [
+      {
+        "$comment": "CE 하나의 완결 경로. success_at은 성공 조건을 관찰할 수 있는 지점이고, recovery_edge_refs가 비면 CE6(이탈 경로)이 FAIL이다.",
+        "id": "PTH-01",
+        "ce_ref": "CE-01",
+        "persona_ref": "PER-01",
+        "start_screen": "SCR-01",
+        "end_screen": "SCR-02",
+        "edge_refs": [
+          "EDG-01"
+        ],
+        "recovery_edge_refs": [],
+        "success_at": "<SCR-nn의 BLK-nn>"
       }
     ],
     "start_screen": null,
     "end_screen": null
   },
+
   "edge_states_planned": [
     {
-      "$comment": "references/screen-specification.md §5. 다섯 가지 전부를 화면마다 설계한다 — 성공 경로만 설계하면 C의 US1·US9가 실패한다. 도메인 상태 enum(states[])과는 다른 축이다: states[]는 진행/완료 같은 업무 상태, 여기는 화면 로딩 상태.",
+      "$comment": "references/screen-specification.md §5. 다섯 가지를 화면마다 설계하는 것이 절차 기본값이다 — 성공 경로만 설계하면 C의 US1·US9가 실패한다. 확정 합격선은 brief.md A단계 기준값이며, 초과·생략은 근거와 함께 기록한다.",
       "state": "empty | loading | partial_offline | error | overflow",
       "screen": null,
       "required_by": "PRD §n | 원장 요소 목록 | CE-nn",
       "must_include": "<empty: 다음 행동+CTA / error: 재시도 vs 완전 실패 구분 / partial_offline: 신뢰 범위 구분>"
     }
-  ]
+  ],
+
+  "evidence": {
+    "$comment": "문서와 실제 노드·렌더의 동일성 확인용. 검증 단계는 이 묶음의 revision·target_ref가 자기 GATE와 같은 것만 입력으로 받는다. 집계 통계만 있는 스냅샷은 전수 증거가 아니므로 coverage_scope에 한계를 적는다 — 제작자의 자체 집계를 독립 실물 검증으로 승격하지 않는다.",
+    "revision": null,
+    "target_ref": "<brief.md target의 file_key + page>",
+    "captured_at": null,
+    "snapshot_ref": "<.cache/nodes-*.json>",
+    "render_refs": [
+      "<renders/*.png>"
+    ],
+    "coverage_scope": "<전수 | 부분(범위 명시) | 집계만>"
+  }
 }

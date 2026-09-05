@@ -34,3 +34,7 @@ desktop.ini
 # feat/yj1 합병 — 로컬 전용
 harness-status.html
 tools/
+
+# Python 캐시 — 검사기·테스트 실행 산출물
+__pycache__/
+*.pyc

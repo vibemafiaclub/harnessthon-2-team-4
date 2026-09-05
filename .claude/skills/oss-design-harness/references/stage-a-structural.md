@@ -81,30 +81,32 @@ Figma 노드 속성만으로 판정한다. 스크린샷 불필요.
 
 ### A-T. 핵심경험 추적성 CE1~CE7 (출처: iceberg-1234 A단계)
 
-> 요구 계약의 핵심경험(`CE-n`, 요구 계약 `requirements[].kind=core_experience`)이 있을 때 판정한다. 없으면 SKIP(기준값 없음)이 아니라 **`검증 불가`** — 축 ③(핵심경험)이 판정되지 않았음을 보고에 명시한다.
+> 요구 계약 `contracts/requirements.json`의 `core_experiences[]`가 있을 때 판정한다. 없으면 SKIP(기준값 없음)이 아니라 **`검증 불가`** — 축 ③(핵심경험)이 판정되지 않았음을 보고에 명시한다. `CE-n`을 생산하는 절차는 `references/experience-definition.md`다.
 
-
-> 참조: `rules/design-principle.md`
-
-`contracts/requirements.json`의 screens[].node_id의 **추적성 매트릭스**와 **핵심 플로우 경로**를 기준으로 검증한다.
+> 참조: `references/design-principle.md`
+> **정정(2026-09-05, PLAN-design-process-import.md §6)**: 이전 서술은 JSON 필드(`screens[].node_id`)에서 마크다운 표(`## 1. 화면 목록`)를 읽도록 되어 있어 계약 형식과 검사 절차가 어긋나 있었다. 아래는 **실제 JSON 필드**를 가리킨다. CE 본문의 정본은 `core_experiences[]`이며 `requirements[].kind=core_experience`는 v2에서 금지다(이중 관리).
 
 | ID | 검증 | 기준 | 심각도 |
 |---|---|---|---|
-| CE1 | **추적성 매트릭스 존재** | 정방향·역방향 표에 **실제 nodeId**가 채워져 있는가 | 없으면 **Blocker** — 제작-S로 반환 |
-| CE2 | **Primary CE 충족** | 모든 Primary `CE-n`이 `충족` 판정인가 | 미충족 시 **Blocker** |
-| CE3 | **근거 없는 화면** | 어떤 CE에도 연결되지 않은 화면이 있는가 | 있으면 Major |
-| CE4 | **핵심 액션 도달성** | P0 블록(Primary CE 핵심 CTA)이 스크롤 없는 영역(Safe Area 상단 + 600pt)에 있는가 | 없으면 Major |
-| CE5 | **플로우 깊이** | Primary CE 완결까지 탭 수가 3회 이하인가 | 4회 이상이면 Major, 6회 이상이면 Blocker |
-| CE6 | **이탈 경로** | Primary CE 플로우의 각 화면에 취소/뒤로 경로가 있는가 | 없으면 Major (막다른 화면) |
-| CE7 | **명세 준수** | 요구 계약의 screens의 화면 목록과 `contracts/requirements.json`의 screens[].node_id의 구현 화면이 일치하는가 | 불일치 시 Major (누락/무단 추가) |
+| CE1 | **추적성 실재** | `core_experiences[].screens` ↔ `screens[].ce_refs`가 양방향으로 맞고, `screens[].node_id`가 **사실 스냅샷에 실제로 존재**하는가 | 없으면 **Blocker** — 제작-S로 반환 |
+| CE2 | **Primary CE 충족** | 모든 `priority=primary`가 `status=confirmed` + `approval_ref` 보유 + 관여 화면 전부 실재하는가 | 미충족 시 **Blocker** |
+| CE3 | **근거 없는 화면** | `ce_refs`가 빈 화면이 있는가 | 있으면 Major |
+| CE4 | **핵심 액션 도달성** | `blocks[].priority=P0`인 블록의 `node_id`가 스크롤 없는 영역에 있는가 | 없으면 Major |
+| CE5 | **플로우 깊이** | `flow.paths[].edge_refs`의 길이가 합격선 이하인가 | 초과 시 Major, 크게 초과 시 Blocker |
+| CE6 | **이탈 경로** | `flow.paths[].recovery_edge_refs`가 있고, 그 edge의 `trigger_node_id`가 실재하는가 | 없으면 Major (막다른 화면) |
+| CE7 | **명세 준수** | 명세의 화면 ID 집합과 **사실 스냅샷의 프레임 집합**이 일치하는가 | 불일치 시 Major (누락/무단 추가) |
 
 #### 측정 방법
 
-- **CE1~CE3**: `contracts/requirements.json`의 screens[].node_id를 파싱하여 표의 완결성을 확인한다. Figma 조회 불필요.
-- **CE4**: 추적성 매트릭스의 "근거 요소" nodeId를 `use_figma`로 조회 → `absoluteBoundingBox.y`가 Safe Area 상단 + 600pt 이내인지 확인. **P0 판정은 요구 계약의 screens의 와이어프레임 구조 표를 기준**으로 한다.
-- **CE5**: `contracts/requirements.json`의 screens[].node_id의 `핵심 플로우 경로` 표의 탭 수를 읽고, 요구 계약의 screens의 Userflow 전이 수와 대조한다.
-- **CE6**: 플로우 각 화면에서 Back Button / Cancel 인스턴스 존재 여부를 `use_figma`로 확인.
-- **CE7**: 요구 계약의 screens의 `## 1. 화면 목록`과 `contracts/requirements.json`의 screens[].node_id의 `## 생성된 프레임`을 대조한다.
+- **CE1~CE3**: `contracts/requirements.json`만 파싱한다. Figma 조회 불필요. 양방향 대조·dangling ref·중복 ID는 `python scripts/harness/check_contracts.py`가 기계적으로 잡으므로(코드 `C-BIDIR`/`C-REF`/`C-DUP`) **먼저 돌리고 그 출력을 근거로 쓴다.** 단, `node_id`가 채워졌다는 사실만으로 `충족`을 주지 않는다 — 실재는 스냅샷 대조(`C-SNAPSHOT`)로만 인정한다.
+- **CE4**: `screens[].blocks[]`에서 `priority=P0`인 블록의 `node_id`를 `use_figma`로 조회 → `absoluteBoundingBox.y`를 확인한다. **P0 판정은 계약의 `blocks[].priority`를 기준**으로 하며, 그 값의 근거는 `personas[].behaviors[].frequency`다.
+- **CE5**: `flow.paths[].edge_refs`의 **개수**로 센다. 화면 수를 세지 않는다 — 같은 화면을 두 번 지나는 경로가 있다.
+- **CE6**: `flow.paths[].recovery_edge_refs`가 가리키는 edge의 `trigger_node_id`가 실재하는지 확인한다. **버튼 이름이 있다는 것만으로 연결 성공을 인정하지 않는다** — `prototype_connected=false`면 `표현됨`이지 `연결됨`이 아니다.
+- **CE7**: 명세의 `screens[].id` 집합과 **사실 스냅샷의 프레임 집합**을 비교한다. 🔴 **같은 JSON 목록을 자기 자신과 비교하지 않는다** — `screens[].name`과 `screens[].node_id`를 대조하는 것은 검증이 아니다.
+
+#### 합격선은 어디서 읽나
+
+CE4의 `600pt`, CE5의 `탭 3회` 같은 수치는 **`brief.md`의 A단계 기준값**에서 읽는다. `references/screen-specification.md`에 적힌 같은 수치는 기획할 때의 **절차 기본값**이지 합격선이 아니다(그 파일 머리의 「절차 기본값이지 확정 합격선이 아니다」 참조). 기준값이 `TODO`면 그 항목은 `SKIP`이며, 절차 기본값으로 빈칸을 메우지 않는다(절대 규칙 1).
 
 🔴 **CE1이 실패하면 나머지 CE 검증은 `검증 불가`다.** 추적성 근거 없이 CE2~CE7을 `Pass`로 기록하지 않는다. 이 경우 A단계를 중단하고 제작-S로 반환한다.
 
