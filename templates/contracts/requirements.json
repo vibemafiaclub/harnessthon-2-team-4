@@ -1,5 +1,5 @@
 {
-  "$comment": "요구 계약 양식 — PRD 원문 위치 → REQ → 화면/상태 매핑. V단계(V-1/V-2/V-4)의 입력. 프로젝트별 사본은 design/<project-id>/contracts/requirements.json. 값은 전부 예시 자리표시자다. 합병(2026-09-05): A-F 기능 커버리지(feat/yj1) + A-T 핵심경험 추적성(iceberg CE-n) 필드 추가.",
+  "$comment": "요구 계약 양식 — PRD 원문 위치 → REQ → 화면/상태 매핑. V단계(V-1/V-2/V-4)의 입력. 프로젝트별 사본은 design/<project-id>/contracts/requirements.json. 값은 전부 예시 자리표시자다. 합병(2026-09-05): A-F 기능 커버리지(feat/yj1) + A-T 핵심경험 추적성(iceberg CE-n) 필드 추가. 이식(2026-09-05): core_experiences[]는 references/experience-definition.md가, screens[]·flow.edges[]·edge_states_planned[]는 references/screen-specification.md가 채운다.",
   "schema_version": 1,
   "project_id": "<project-id>",
   "prd_path": "docs/<...>/prd.md",
@@ -45,11 +45,26 @@
   ],
   "screens": [
     {
+      "$comment": "references/screen-specification.md 산출. name은 W와 U가 같은 S<nn>을 쓴다 — 두 벌로 매기면 추적성 매트릭스가 갈라진다. node_id는 W막에서 null로 두고 U막 제작-S가 채운다.",
       "id": "SCR-01",
       "name": "<Sxx 화면명>",
       "purpose": "",
       "entry_from": [],
       "primary_cta_to": "SCR-02",
+      "supports_ce": [],
+      "blocks": [
+        {
+          "$comment": "W막 §4 블록 구조. priority는 CE 우선순위가 아니라 personas[].behaviors[].frequency에서 나온다. P0는 화면당 1개 권장 + 스크롤 없는 영역(CE4).",
+          "order": 1,
+          "name": "",
+          "role": "",
+          "priority": "P0 | P1 | P2 | 고정",
+          "needed_component": null,
+          "destructive": false
+        }
+      ],
+      "alignment_axes_planned": null,
+      "spacing_kinds_planned": null,
       "node_id": null,
       "assumption_ref": null
     }
@@ -64,16 +79,51 @@
   ],
   "core_experiences": [
     {
+      "$comment": "references/experience-definition.md 산출. 0단계에서 status=candidate로 만들고, I막 승격(LOCK-I) 후 confirmed. Primary는 source_kind가 사람-원문 또는 실측이어야 한다 — 사람-해석만으로는 Primary 불가.",
       "id": "CE-01",
       "priority": "primary | secondary",
+      "status": "candidate | confirmed",
+      "promoted_by": null,
+      "promoted_ref": "<LOCK-I 근거 원문 위치>",
       "statement": "<유저가 무엇을 하려 하는가>",
       "success_condition_observable": "<화면 상태로 관찰 가능한 조건 — 내면 상태 금지>",
+      "source_kind": "사람-원문 | 실측 | 사람-해석",
       "evidence_labels": [
-        "[PRD] | [관찰] | [가설]"
+        "<원문 위치 또는 레퍼런스 증거 경로>"
       ],
       "screens": [],
       "evidence_nodes": [],
       "flow_depth_taps": null
+    }
+  ],
+  "personas": [
+    {
+      "$comment": "references/experience-definition.md §1. PRD가 요구하는 모든 역할을 넣는다 — 역할 하나를 Primary로 접어 다른 역할의 요구를 누락하지 않는다(PLAN-design-process-import.md §3). behaviors[].frequency가 W막 블록 위계(P0/P1/P2)의 1차 기준이다.",
+      "id": "PER-01",
+      "priority": "primary | secondary",
+      "label": "<역할 기반 라벨>",
+      "context": "",
+      "need": "",
+      "constraint": "",
+      "failure_scenario": "",
+      "source_kind": "사람-원문 | 실측 | 사람-해석",
+      "behaviors": [
+        {
+          "action": "",
+          "frequency": "매일 | 매 세션 | 주 1회 | 최초 1회",
+          "source_kind": "사람-원문 | 실측 | 사람-해석"
+        }
+      ]
+    }
+  ],
+  "adjacent_experiences": [
+    {
+      "$comment": "references/experience-definition.md §4. flow_link가 비면 이 제품의 관심사가 아니므로 지운다. 'before' 항목이 CE의 Entry와 W막 진입 화면의 근거다.",
+      "kind": "before | after | alongside | substitute | adjacent_domain",
+      "experience": "",
+      "flow_link": "<유저 흐름과의 연결 관계 — 필수>",
+      "design_implication": "",
+      "source_kind": "사람-원문 | 실측 | 사람-해석"
     }
   ],
   "setup_points": {
@@ -110,9 +160,11 @@
   },
   "edge_states_planned": [
     {
-      "state": "empty | loading | error",
+      "$comment": "references/screen-specification.md §5. 다섯 가지 전부를 화면마다 설계한다 — 성공 경로만 설계하면 C의 US1·US9가 실패한다. 도메인 상태 enum(states[])과는 다른 축이다: states[]는 진행/완료 같은 업무 상태, 여기는 화면 로딩 상태.",
+      "state": "empty | loading | partial_offline | error | overflow",
       "screen": null,
-      "required_by": "PRD §n | 원장 요소 목록"
+      "required_by": "PRD §n | 원장 요소 목록 | CE-nn",
+      "must_include": "<empty: 다음 행동+CTA / error: 재시도 vs 완전 실패 구분 / partial_offline: 신뢰 범위 구분>"
     }
   ]
 }

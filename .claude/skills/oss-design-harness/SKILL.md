@@ -62,9 +62,11 @@ description: Figma 파일 안에서 화면을 만들거나 기존 Figma 화면�
 | 게이트 G-1~G-4 | 루트·템플릿·target·MCP 실측 | 이 파일 | — |
 | M 무드 | 레퍼런스 되묻기 → 무드 어휘 잠금 | `process-acts.md`, `reference-research.md`, `stage-0-alignment.md` | brief 시각 언어, LOCK-M |
 | 0 원장 | 요구·판단기준 수렴, 소스 5종 | `stage-0-alignment.md` | `brief.md`, `contracts/requirements.json` |
+| 0 핵심경험 | 페르소나·`CE-n` **초안**·인접 경험 (축 ③의 근거) | `experience-definition.md` | brief 핵심경험 섹션, `core_experiences[]` |
 | B 발산·수렴 | 축 분리·후보 3개·교차 비평·사람 선택 | `stage-b-diverge.md` | `decisions.md` |
+| W 기획 | 화면 목록·IA 3안·Userflow·블록 위계·추적성 계획 | `screen-specification.md` | `screens[]`, `flow.edges[]`, `edge_states_planned[]` |
 | W 와이어프레임 | HTML 로우파이 → 컨펌 → Figma W | `process-acts.md` | W 화면, LOCK-W |
-| I 기능 인터뷰 | 시나리오 과제, ooo interview | `process-acts.md`, `docs/integrations/ooo-interview.md` | `interview.md`, LOCK-I |
+| I 기능 인터뷰 | 시나리오 과제, ooo interview, **`CE-n` 승격** | `process-acts.md`, `experience-definition.md`, `docs/integrations/ooo-interview.md` | `interview.md`, LOCK-I |
 | U 제작-L/S | 토큰 유도 → 컴포넌트 → 화면 | `foundation-derivation.md`, `figma-playbook.md` | Figma, 스냅샷, `contracts/components.json` |
 | A 구조 검증 | A-F 커버리지 → A-T 추적성 → A-0 하한선 → A-1~A-9 | `stage-a-structural.md` | decisions 검증 로그 |
 | C 미적 검증 | 스크린샷, C-1~C-7·C-X·C-S, Critic/Advocate/PM | `stage-c-aesthetic.md` | decisions 검증 로그 |
@@ -114,8 +116,9 @@ description: Figma 파일 안에서 화면을 만들거나 기존 Figma 화면�
 | 게이트 미통과 | **정지** — 사람에게 요청 |
 | 사람이 **검수·검증만** 요청 + 대상 프레임 있음 | **A단계** (0·B·제작 건너뜀) |
 | `brief.md` 없음 / 원장 미수렴(수렴 판정표에 열린 갭) / 무엇을 만들지 불확실 | **0단계** |
+| `brief.md` 있고 `contracts/requirements.json`에 `core_experiences[]` 없음 | **0단계 핵심경험** (`experience-definition.md`) |
 | `brief.md` 있고 `decisions.md`에 선택된 후보 없음 | **B단계** |
-| 후보 선택됨, `W Wireframes` 페이지에 화면 없음 | **W막** (와이어프레임) |
+| 후보 선택됨, `W Wireframes` 페이지에 화면 없음 | **W막** (`screen-specification.md` 기획 → `process-acts.md` 매체) |
 | W 있음, `interview.md` 없음 또는 GATE `stage: interview` 미PASS | **I막** (기능 인터뷰) — 생략은 사람 결정 + 가정 로그 |
 | I막 PASS, 대상 프레임(U) 없음 | **제작단계** (U막) |
 | 대상 프레임 있음, A단계 미실시 | **A단계** |
@@ -148,7 +151,9 @@ description: Figma 파일 안에서 화면을 만들거나 기존 Figma 화면�
 - `references/design-principle.md` — 3축 정의·결합 규칙·충돌 우선순위 (iceberg 이식)
 - `references/process-acts.md` — O단계, 4막, LOCK/UNLOCK, GATE, 재개
 - `references/stage-0-alignment.md`, `reference-research.md`, `foundation-derivation.md`
+- `references/experience-definition.md` — 🔴 **축 ③의 입력 생산.** 페르소나·`CE-n`·인접 경험 (iceberg P단계 이식). 이게 없으면 A-T·C-X가 판정할 대상이 없어 축 ③이 상시 `검증 불가` → FAIL
 - `references/stage-b-diverge.md`
+- `references/screen-specification.md` — W막 기획 방법론. 화면 목록·IA 3안·Userflow·블록 위계·추적성 계획 (iceberg S단계 이식). `process-acts.md` W막 규칙은 **매체**, 이 파일은 **무엇을 기획하나**
 - `references/figma-playbook.md` — 제작-L/S, 스냅샷 계약, Plugin API 함정 합집합
 - `references/stage-a-structural.md`, `stage-c-aesthetic.md`, `stage-v-flow.md`, `verify-routing.md`
 - `references/forbidden-patterns.md` — FP1~FP6 (iceberg 이식)

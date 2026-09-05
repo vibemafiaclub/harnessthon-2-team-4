@@ -21,7 +21,7 @@
 | **M막** | 핵심경험의 **관습적 해법**만 관찰 (`reference-research.md`) | 아직 없음 | — |
 | **0단계** | 이 파일의 §1~§9로 **초안**을 만들어 원장에 올린다 | **후보** | `사람-원문`에서 온 것만 확정 가능, 나머지는 `사람-해석` |
 | **B단계** | 핵심경험 **강화 수단** 결정 — 시그니처 피처 | 후보 (변경 금지, 인용만) | — |
-| **W막** | 화면 ↔ `CE-n` **추적성 계획** (`screen-planning.md`) | 후보 기준으로 계획 | — |
+| **W막** | 화면 ↔ `CE-n` **추적성 계획** (`screen-specification.md`) | 후보 기준으로 계획 | — |
 | **I막** | 실사용자·시뮬레이션 체험으로 **정정·승격** → `LOCK-I` | **확정** | 승격 원문 |
 | **U막 이후** | A-T / C-X가 확정된 `CE-n`으로 판정 | 확정 (UNLOCK 없이 변경 금지) | — |
 
@@ -62,14 +62,19 @@ PRD의 유저 스토리·사용자 상황과 M막 레퍼런스 관찰에서 도�
 | 제약 | 시간·주의력·환경·숙련도의 한계 |
 | 실패 시나리오 | 목적을 달성하지 못하면 무슨 일이 생기는가 |
 
-각 항목에 소스를 붙인다. **Primary 페르소나는 1명**으로 좁힌다 — 둘을 동등하게 만족시키려면 화면이 타협되고 결국 아무도 만족하지 못한다.
+각 항목에 소스를 붙인다.
 
-- `project.json`의 `interview.audiences`가 복수여도 **Primary는 하나**다. 나머지는 Secondary로 두고 I막에서 각각 인터뷰한다(대상 수와 Primary 수는 다른 문제다).
+🔴 **원본(iceberg)의 "Primary 페르소나 1명 강제"는 이 하네스로 옮기지 않는다** (`docs/PLAN-design-process-import.md` §3). 여러 역할이 함께 쓰는 제품에서는 역할 하나를 Primary로 접는 순간 나머지 역할의 PRD 요구가 **중요도 라벨 때문에** 누락된다. 대신:
+
+- **화면별 주 사용 역할**은 정한다 (`screens[].blocks[]`의 위계 근거). 제품 전체의 Primary를 하나로 접지는 않는다.
+- **어느 역할의 PRD 요구도 우선순위 라벨을 이유로 누락하지 않는다.** 역할이 여럿이면 `personas[]`에 여럿을 두고, 각각의 요구가 최소 하나의 `CE-n`에 연결되는지 확인한다.
+- 역할 간 화면 요구가 **충돌**하면 임의로 한쪽을 접지 않는다 — 충돌 상태로 표시해 사람에게 보여준다(`stage-0-alignment.md` 충돌 처리).
+- `project.json`의 `interview.audiences`가 여럿이면 I막에서 **각각** 인터뷰한다.
 - 페르소나의 **상황·제약은 `foundation-derivation.md`의 토큰 하한 도출 입력**이다. 여기가 비면 거기서 대비·최소 크기 하한을 근거 없이 고르게 된다.
 
 #### 핵심 행동 + 빈도
 
-Primary 페르소나가 이 제품에서 하는 행동과 **빈도**를 함께 적는다.
+**각 역할**이 이 제품에서 하는 행동과 **빈도**를 함께 적는다. 역할이 여럿이면 역할별로 표를 나눈다.
 
 | # | 핵심 행동 | 빈도 | 소스 |
 |---|---|---|---|
@@ -92,7 +97,7 @@ Primary 페르소나가 이 제품에서 하는 행동과 **빈도**를 함께 �
 
 ### 4. 인접 경험 매핑 — PRD 밖에서 가져오기
 
-Primary 페르소나의 **상황**을 놓고, PRD에 없지만 그 상황에 실제로 동반되는 경험을 나열한다.
+각 역할의 **상황**을 놓고, PRD에 없지만 그 상황에 실제로 동반되는 경험을 나열한다.
 
 | # | 도출 질문 |
 |---|---|
@@ -201,10 +206,13 @@ Pain → Entry → Core Interaction → Understanding/Decision → Outcome
 
 | 무엇 | 어디에 |
 |---|---|
-| 페르소나 · 핵심 행동/빈도 · 인접 경험 · Concept · 추론 체인 | `design/<project-id>/brief.md` 핵심경험 섹션 |
-| `CE-n` 목록 (ID·우선순위·statement·성공 조건·근거·화면) | `contracts/requirements.json`의 `core_experiences[]` |
-| `CE-n`에 대응하는 요구 항목 | 같은 파일 `requirements[]`에 `kind: "core_experience"` |
+| 페르소나 (역할·상황·제약·핵심 행동/빈도) | `contracts/requirements.json` → `personas[]` |
+| 인접 경험 | 같은 파일 → `adjacent_experiences[]` |
+| `CE-n` 목록 (ID·우선순위·statement·성공 조건·근거·참조) | 같은 파일 → `core_experiences[]` |
+| Concept · 추론 체인 · Structural Gap · Reframe | `design/<project-id>/brief.md` 핵심경험 섹션 |
 | 미확정·차단 항목 | `brief.md` 가정 로그 + 미해결 결정의 이름 |
+
+🔴 **CE 본문을 두 곳에서 관리하지 않는다** (`PLAN-design-process-import.md` §5). `CE-n`의 **정본은 `core_experiences[]`** 이고, 대응하는 요구는 `requirement_refs`로 **REQ ID만 참조**한다. `requirements[]`에 `kind: "core_experience"`로 본문을 복제하지 않는다 — 두 곳이 갈라지면 어느 쪽이 승격된 것인지 알 수 없게 된다. 기존 데이터가 두 위치에 있으면 대조표를 만든 뒤 충돌을 해결한다.
 
 `core_experiences[]`의 `screens` / `evidence_nodes` / `flow_depth_taps`는 **여기서 채우지 않는다** — W막(화면)과 U막(nodeId)이 채운다.
 
@@ -212,7 +220,8 @@ Pain → Entry → Core Interaction → Understanding/Decision → Outcome
 
 0단계에서 이 목록이 **후보로** 채워지면 W막으로 간다. I막 승격 후 `LOCK-I`가 붙으면 확정이다.
 
-- [ ] Primary 페르소나 **1명** (상황·근본 욕구·제약·실패 시나리오 + 소스)
+- [ ] PRD가 요구하는 **모든 역할**이 `personas[]`에 있음 (상황·근본 욕구·제약·실패 시나리오 + 소스)
+- [ ] 각 역할의 요구가 최소 하나의 `CE-n`에 연결됨 — 우선순위 라벨 때문에 누락된 역할 0건
 - [ ] 핵심 행동 + **빈도** (매일 / 주 1회 / 최초 1회) — W막 블록 위계의 근거
 - [ ] Find the Core — 기능 목록이 아닌 **변화**로 서술
 - [ ] Model the System — 구조/관계 모델 (W막 IA 근거)
@@ -236,7 +245,7 @@ Pain → Entry → Core Interaction → Understanding/Decision → Outcome
 - ❌ `사람-해석`을 `사람-원문`으로 **위장**하기.
 - ❌ `사람-해석`만으로 **Primary `CE-n`** 만들기.
 - ❌ 성공 조건을 **내면 상태**로 쓰기.
-- ❌ Primary 페르소나를 **2명 이상** 두기.
+- ❌ 🔴 역할 하나를 Primary로 접어 **다른 역할의 PRD 요구를 누락**하기.
 - ❌ 수렴에서 **중심 원리를 여러 개** 남기기.
 - ❌ 🔴 **에이전트가 `CE-n`을 스스로 확정 선언하기.** 승격은 I막에서 사람이 한다(절대 규칙 2). 0단계 산출물은 언제나 **후보**다.
 - ❌ 🔴 I막 이후에 `CE-n`을 **조용히 수정**하기. `LOCK-I` 이후 변경은 `UNLOCK 요청`뿐이다.
