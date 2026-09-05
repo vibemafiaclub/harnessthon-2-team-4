@@ -36,16 +36,25 @@
 
 ## 추출된 디자인 토큰 값
 
-경조사 맥락의 절제된 톤 — 화려한 그라디언트·과한 파스텔 대신 차분한 뉴트럴 베이스에 포인트 컬러 하나만 사용.
+> **2026-09-05 갱신 — 팔레트는 사람이 명시적으로 지정했다.** "청첩장이면 핑크가 상식적"이라는 지시를 받아 로즈 계열로 교체했다.
+> `stage-0-alignment.md` §4 규칙에 따라 유도 절차를 건너뛰고 **사람 지정**으로 기록한다 — 방법론 파일에는 이 값을 쓰지 않는다.
+> 교체 전 값(테라코타 `#B8896B` / 아이보리 `#F7F5F2`)은 AI가 "경조사=절제된 톤"으로 유도한 것이었다.
 
-- **Background**: `#F7F5F2` (따뜻한 아이보리 뉴트럴 — 순백은 병원/사무 느낌이라 배제)
-- **Surface(카드)**: `#FFFFFF`
-- **Text/Primary**: `#2B2622` (완전 블랙 대신 톤온톤 다크브라운 — 경조사 인쇄물 느낌)
-- **Text/Secondary**: `#8A8178`
-- **Accent**: `#B8896B` (차분한 테라코타 — 청첩장에서 흔한 로즈골드 계열을 과채도 없이 절제)
-- **Success(확정됨)**: `#5B8A6B`
-- **Warning(확정앞둠/마감임박)**: `#C98A3A`
-- **Neutral(대기중)**: `#B8B2AA`
-- **Muted(완료)**: `#D9D4CC`
-- **Spacing 그리드**: 8pt (예외적으로 아이콘-텍스트 최소 간격만 4pt 허용)
-- **타이포**: Pretendard 지정 → 제작 시점에 Figma 폰트 목록에 없어 **Inter로 대체**(제작 단계에서 발견한 제약, 가정 아님 — 별도 표시). Title 20/Semi Bold, Body 15/Regular, Caption 13/Regular, Label 12/Medium(배지용)
+| 토큰 | 값 | 근거 |
+|---|---|---|
+| bg/background | `#FBF6F7` | 사람 지정(로즈)에 맞춘 아주 옅은 로즈 틴트 뉴트럴. 순백은 병원/사무 느낌이라 배제 |
+| bg/surface | `#FFFFFF` | 카드 표면 — 지반과 명도 차로 카드 경계를 만듦 |
+| text/primary | `#2B2126` | 완전 블랙 대신 로즈기 있는 다크. 지반과 색온도 일치 |
+| text/secondary | `#8A7A80` | 보조 정보·아이콘 기본색 |
+| text/on-accent | `#FFFFFF` | accent 위 텍스트 |
+| accent | `#B84A6B` | **사람 지정.** 흰 텍스트 대비를 확보하려고 채도가 아니라 명도를 낮춘 로즈 |
+| border/subtle | `#EDE0E4` | 구분선 |
+| avatarbg/accent | `#F3DDE4` | 아바타 배경 — accent의 옅은 단계 |
+| state/success (확정됨) | `#5B8A6B` | **의미색이라 로즈로 물들이지 않음** — 성공/경고/중립은 색 자체가 의미를 지므로 브랜드색과 분리 |
+| state/warning (마감임박) | `#C98A3A` | 위와 동일 |
+| state/neutral (대기중) | `#B8B2AA` | 위와 동일 |
+| state/muted (완료) | `#D9D4CC` | 위와 동일 |
+| 그룹색 (대학/직장/동네/가족) | 4종 | 지인 다중소속 도트용 — `decisions.md` 축 3 |
+| Spacing 그리드 | 8pt | 아이콘–텍스트 최소 간격만 4pt 허용 |
+| 타이포 | Inter | Pretendard 미탑재로 대체(가정 아니라 **제약**). Title 20/SemiBold, Body 15/Regular, Caption 13/Regular, Label 12/Medium |
+| 아이콘 | stroke 1.8, 24×24 | 이모지 텍스트 대체 금지. stroke를 컬러 변수에 바인딩해 텍스트와 색을 통일 |

@@ -11,7 +11,9 @@ description: 이미 만들어진 Figma 화면을 A단계(구조적 사실 — �
 
 ## A단계 — 구조적 사실 검증
 
-체크 카테고리와 조회 원칙: [references/stage-a-structural.md](references/stage-a-structural.md). 기준값은 `criteria.md`의 "A단계 기준값". `get_metadata`/`use_figma` 조회만으로 예/아니오가 나온다. 스크린샷 불필요.
+체크 카테고리와 조회 원칙: [references/stage-a-structural.md](references/stage-a-structural.md). 기준값은 `criteria.md`. `get_metadata`/`use_figma` 조회만으로 예/아니오가 나온다. 스크린샷 불필요.
+
+**기능 커버리지를 가장 먼저 본다.** 요구사항 항목·유저스토리·흐름 연결성을 프레임과 1:1 대조해 "있어야 할 것이 없는지"부터 확인한다. 없는 화면은 스크린샷에 찍히지 않으므로 C단계로 넘어가면 영영 발견되지 않는다 — 미제작 산출물(빈 상태 포함)은 전부 A단계가 잡는다. 여기서 실패하면 나머지 구조 검사와 C단계를 진행하기 전에 먼저 보고한다: 존재하지 않는 화면의 간격과 색을 검사하는 건 의미가 없다.
 
 ## C단계 — 미적·게슈탈트 판단
 
