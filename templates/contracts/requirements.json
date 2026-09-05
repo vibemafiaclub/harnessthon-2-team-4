@@ -130,9 +130,10 @@
       "primary_cta_to": "SCR-02",
       "blocks": [
         {
-          "$comment": "W막 블록 구조. priority는 CE 우선순위가 아니라 personas[].behaviors[].frequency에서 나온다. 절차 기본값은 화면당 P0 1개 + 스크롤 없는 영역이며, 확정 합격선은 brief.md A단계 기준값이다.",
+          "$comment": "W막 블록 구조(screen-specification.md §4 표와 1:1). priority는 CE 우선순위가 아니라 personas[].behaviors[].frequency에서 나온다. 절차 기본값은 화면당 P0 1개 + 스크롤 없는 영역이며, 확정 합격선은 brief.md A단계 기준값이다. role은 선택 필드 — step-indicator는 PLAN-improve-uxui-guide B3(단계형 플로우)가 예약한 값이고, A-F가 '3전이 이상 경로인데 step-indicator 블록 없음'을 잡는 데 쓴다.",
           "id": "BLK-01",
-          "purpose": "<이 블록의 역할>",
+          "purpose": "<이 블록이 화면에서 하는 일 — 한 문장>",
+          "role": "nav | content | cta | support | step-indicator | null",
           "priority": "P0 | P1 | P2 | 고정",
           "destructive": false,
           "node_id": null

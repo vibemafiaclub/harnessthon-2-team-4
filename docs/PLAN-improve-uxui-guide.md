@@ -137,3 +137,31 @@
 3. **B2 A-10 기본값**: `primary_cta_per_screen: 1`을 기본 ON으로 둘지, 프로젝트마다 사람이 켤지(권고: 기본 ON — 가이드 §3과 C-6 중복 입구 규칙이 같은 방향).
 4. **B4 스케일 하한**: 타이포 레벨 최소 개수(가이드 6, 권고 5)와 반경 상한(가이드 3~4)을 코어 기본값으로 둘지, 원장 TODO(사람 입력)로 둘지. 판단기준·기준값 TODO는 원칙상 사람 몫이므로 **원장 TODO + 가이드 값을 "예:"로 표기**를 권고.
 5. **§8~11 값의 목적지**: `docs/backlog/saju/`(권고, 도메인 일치) 또는 폐기.
+
+## 7. v2 계약 정합 노트 (2026-09-05, `52174d1` 이후 추가)
+
+이 계획은 `3fdb23c` 시점의 **v1 템플릿**을 대조 기준으로 썼다. 그 뒤 `52174d1`이 요구 계약을 **v2**로 올리고 검사기를 강화했으므로, 아래 항목은 v2 위에서 다시 읽는다. 본문(§0~§6)은 수정하지 않았다.
+
+### 이미 끝난 것
+- **P0 L99** "미커밋 변경을 먼저 커밋해 분리" → `3fdb23c`(P·S 이식), `52174d1`(v2·검사기)로 완료.
+
+### 필드명 재기준 — 계획의 표기 → v2 실제 필드
+| 계획 항목 | 계획의 표기 | v2에서 쓸 것 |
+|---|---|---|
+| B1 | `primary_action`(→ edges의 어느 cta) | `primary_action_edge: "EDG-nn"` — v2 `flow.edges[]`에 `id`가 생겼다 |
+| B3 | `blocks[].role`에 `step-indicator` 예약 | **v2에 `role` 추가됨**(선택 필드, `nav|content|cta|support|step-indicator`). v1 대조 시점엔 없었다 |
+| B3 | "화면 3개 이상이 순서로 이어지는 흐름" | `flow.paths[]`에서 `len(edge_refs) ≥ 3`인 경로. A-F 검사: 그 경로의 화면에 `role=step-indicator` 블록 부재 → FAIL |
+| B4 | "W막이 넘긴 간격 종류 개수(≤4)" | `screens[].spacing_kinds_planned` / 정렬 축은 `alignment_axes_planned` — **개수만** 넘긴다(값은 U막) |
+| B5 | `renders/r<라운드>-sheet.png` | `evidence.render_refs[]`에 넣는다. 검사기 `_ref_exists()`가 범위·글롭 표기를 처리한다 |
+| B2 | A-10 신설 | `stage-a-structural.md` A-T 절은 `52174d1`에서 정정됨. A-10은 **별도 절**로 추가 — A-T와 충돌 없음 |
+
+### 검사기 연결
+- **P1 L105**: `brief.md` YAML 새 키(`radius.allowed` 등)는 check 3 정규식이 자동 포착 — 코드 변경 불필요.
+- B1의 새 계약 필드(`primary_message`·`secondary_info[]`)를 confirmed 자리표시자 검사(`C-PLACEHOLDER`)에 넣으려면 `validate_contract()` F절의 `fields` 튜플에 이름 추가 — 한 줄. 넣지 않으면 검사 대상이 아닐 뿐 에러는 아니다.
+- **P2에서 SP8/SP9를 추가하면** `forbidden-patterns.md` 「두 층위의 금지」 표의 `SP1~SP7`도 `SP1~SP9`로 — 표가 두 곳이다(§0 표와 그 위 층위 표).
+
+### 선행 의존
+- **P4 L122** "청첩장 run 기존 `requirements.json` 화면 1개에 채워 보고" — 청첩장에 `contracts/requirements.json`이 **없다**(검사기 WARN `요구 계약 없음`). `PLAN-design-process-import.md` §7 순서 4(계약 초안 생성, S05→S08 시범)가 먼저다. 그 전엔 P4를 리허설할 대상이 없다.
+
+### 겹치는 파일 — 전부 additive
+`screen-specification.md`(B3 §2·§3·§4·§5), `forbidden-patterns.md` §0(SP8/9), `stage-a-structural.md`(A-3·A-10·A-F), `requirements.json`(B1). 편집 시 주의 한 곳: `screen-specification.md` 머리의 「절차 기본값이지 확정 합격선이 아니다」 — B3이 "P0 1개 규칙 재사용"이라 쓴 것은 그 규칙을 **절차 기본값**으로 재사용한다는 뜻이어야 한다. 합격선은 여전히 `brief.md`에서만 읽는다.
