@@ -19,10 +19,10 @@
 
 | 막 | 기존 산출물 | 위치 | LOCK | 할 일 |
 |---|---|---|---|---|
-| M | 없음 (U의 아이보리·레드는 에이전트 가정) | — | 없음 | 레퍼런스 갤러리 → 되묻기 → LOCK-M |
-| W | Figma W 11화면(역추출) · HTML 없음 | `xMsSA…` / W Wireframes | 없음 | HTML 로우파이 역생성 → 컨펌 → LOCK-W |
-| I | interview.md 준비 | `design/invitation-scheduler/interview.md` | 없음 | ooo interview 경로 B로 실시 |
-| U | 11화면, A 1.2 BLOCKED · C 1.0 PASS · V 미실시 | `ZVyw…` / 03 Screens | 없음 | I 결과 반영 후 A 재검·V |
+| M | 없음 (U의 아이보리·레드는 에이전트 가정) | — | 없음 | 레퍼런스 갤러리 → 되묻기 → LOCK-M (아직 미실시) |
+| W | Figma W 11화면(역추출) · HTML 없음 | `xMsSA…` / W Wireframes | 없음 | HTML 로우파이 역생성 → 컨펌 → LOCK-W (아직 미실시) |
+| I | **완료** — 시뮬레이션 워크스루 2건, GAP 6개 + FIX 2개 승격 | `design/invitation-scheduler/interview.md` | **LOCK-I (2026-09-05)** | — |
+| U | `xMsSA…`에 11화면 완성 + GAP-02~06 반영 완료. `ZVyw…`는 백업(A 1.2 BLOCKED·C 1.0 PASS) | `xMsSA…` / 03 Screens | 없음 | 독립 reviewer A/C/V 정식 검증, A-4 산식 확정, 제출 |
 
 모드: **improve** (기존 run 2026-09-05-r1 이어서) · 시작 막: **M**
 

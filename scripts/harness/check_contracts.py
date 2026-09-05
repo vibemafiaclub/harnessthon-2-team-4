@@ -18,7 +18,7 @@ import json, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-CORE_FILES = [ROOT / ".claude/skills/oss-design-harness/SKILL.md", *sorted((ROOT / "templates").rglob("*"))]
+CORE_FILES = [ROOT / ".claude/skills/oss-design-harness/SKILL.md", ROOT / ".claude/skills/design-verify/SKILL.md", *sorted((ROOT / ".claude/skills/oss-design-harness/references").rglob("*.md")), *sorted((ROOT / "templates").rglob("*"))]
 FILE_KEY_RE = re.compile(r"figma\.com/design/([0-9A-Za-z]{22,128})|file_key:\s*([0-9A-Za-z]{22,128})|fileKey\s*`?([0-9A-Za-z]{22,128})")
 GATE_REQUIRED = ["stage", "mode", "project_id", "run_id", "revision", "producer", "target_ref", "output_refs", "status", "next_stage"]
 

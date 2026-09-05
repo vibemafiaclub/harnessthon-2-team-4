@@ -1,5 +1,5 @@
 {
-  "$comment": "요구 계약 양식 — PRD 원문 위치 → REQ → 화면/상태 매핑. V단계(V-1/V-2/V-4)의 입력. 프로젝트별 사본은 design/<project-id>/contracts/requirements.json. 값은 전부 예시 자리표시자다.",
+  "$comment": "요구 계약 양식 — PRD 원문 위치 → REQ → 화면/상태 매핑. V단계(V-1/V-2/V-4)의 입력. 프로젝트별 사본은 design/<project-id>/contracts/requirements.json. 값은 전부 예시 자리표시자다. 합병(2026-09-05): A-F 기능 커버리지(feat/yj1) + A-T 핵심경험 추적성(iceberg CE-n) 필드 추가.",
   "schema_version": 1,
   "project_id": "<project-id>",
   "prd_path": "docs/<...>/prd.md",
@@ -9,11 +9,18 @@
       "id": "REQ-01",
       "prd_ref": "§4-1",
       "text_verbatim": "<PRD 원문 그대로>",
-      "kind": "feature",
-      "screens": ["SCR-01"],
+      "kind": "feature | core_experience | tricky_case",
+      "screens": [
+        "SCR-01"
+      ],
       "states": [],
       "status": "confirmed",
-      "source_kind": "사람-원문"
+      "source_kind": "사람-원문",
+      "coverage": {
+        "screens_present": null,
+        "status": "✅ | ⚠️ | ❌ | 검증불가",
+        "evidence_nodes": []
+      }
     }
   ],
   "tricky_cases": [
@@ -21,17 +28,91 @@
       "id": "CASE-01",
       "prd_ref": "§3",
       "text_verbatim": "<PRD 원문 그대로>",
-      "must_appear_in": ["SCR-02"],
+      "must_appear_in": [
+        "SCR-02"
+      ],
       "evidence_nodes": []
     }
   ],
   "states": [
-    { "id": "STATE-01", "code": "<enum value>", "label": "<표시 라벨>", "source_kind": "사람-원문|사람-해석", "must_appear": true }
+    {
+      "id": "STATE-01",
+      "code": "<enum value>",
+      "label": "<표시 라벨>",
+      "source_kind": "사람-원문|사람-해석",
+      "must_appear": true
+    }
   ],
   "screens": [
-    { "id": "SCR-01", "name": "<Sxx 화면명>", "purpose": "", "entry_from": [], "primary_cta_to": "SCR-02", "node_id": null, "assumption_ref": null }
+    {
+      "id": "SCR-01",
+      "name": "<Sxx 화면명>",
+      "purpose": "",
+      "entry_from": [],
+      "primary_cta_to": "SCR-02",
+      "node_id": null,
+      "assumption_ref": null
+    }
   ],
   "assumptions": [
-    { "id": "ASM-01", "text": "", "chosen_by": "사용자|에이전트", "needs_confirmation": "high|medium|low" }
+    {
+      "id": "ASM-01",
+      "text": "",
+      "chosen_by": "사용자|에이전트",
+      "needs_confirmation": "high|medium|low"
+    }
+  ],
+  "core_experiences": [
+    {
+      "id": "CE-01",
+      "priority": "primary | secondary",
+      "statement": "<유저가 무엇을 하려 하는가>",
+      "success_condition_observable": "<화면 상태로 관찰 가능한 조건 — 내면 상태 금지>",
+      "evidence_labels": [
+        "[PRD] | [관찰] | [가설]"
+      ],
+      "screens": [],
+      "evidence_nodes": [],
+      "flow_depth_taps": null
+    }
+  ],
+  "setup_points": {
+    "$comment": "A-F: 사용자별 값(역할·소속·기준일·상대)을 처음 정하는 화면과 되돌릴 경로가 있어야 한다",
+    "user_values": [
+      {
+        "value": "<예: 내 역할>",
+        "set_in_screen": null,
+        "changeable_in_screen": null
+      }
+    ],
+    "role_entry_points": [
+      {
+        "role": "<역할>",
+        "first_screen": null,
+        "how_arrived": null,
+        "navigation_differs": null
+      }
+    ]
+  },
+  "flow": {
+    "$comment": "A-F: 시작(데이터 생성 폼)·중간(다음 버튼 목적지)·끝(완료 결과 화면) 세 지점 + 프로토타입 reactions",
+    "edges": [
+      {
+        "from": "SCR-01",
+        "cta": "<버튼 문구>",
+        "to": "SCR-02",
+        "prototype_connected": false,
+        "expressed_only": true
+      }
+    ],
+    "start_screen": null,
+    "end_screen": null
+  },
+  "edge_states_planned": [
+    {
+      "state": "empty | loading | error",
+      "screen": null,
+      "required_by": "PRD §n | 원장 요소 목록"
+    }
   ]
 }

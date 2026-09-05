@@ -30,3 +30,7 @@ desktop.ini
 
 # 참가자 산출물(brief.md·decisions.md)은 의도적으로 무시하지 않는다 —
 # 상호 심사·결과 비교에 쓰이므로 공유되어야 한다. 단 그 안에 토큰을 적지 않는다.
+
+# feat/yj1 합병 — 로컬 전용
+harness-status.html
+tools/

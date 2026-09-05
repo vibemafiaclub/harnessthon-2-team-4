@@ -179,6 +179,45 @@ next_stage: interview
 |---|---|---|---|
 | 2026-09-05 | Claude(이 세션, master+worker 겸임) → 사용자 | target 파일을 xMsSA6ndIWBXEANJ0Ycphf로 확정 후 P1~P7 전체 제작 완료(토큰·아이콘18·컴포넌트17종·화면11개·README·Foundations), 스크린샷 육안 검증 및 3종 버그 수정(아이콘 왜곡·오토레이아웃 클리핑·세그먼트 컨트롤) 완료 | 독립 reviewer Agent A/C 정식 검증, A-4 계산방법론 확정, 제출(Figma 링크 공개 설정) |
 
+```yaml
+stage: interview
+mode: improve
+project_id: invitation-scheduler
+run_id: 2026-09-05-r1
+revision: "1.4"
+producer: claude-session-this-turn
+target_ref: xMsSA6ndIWBXEANJ0Ycphf / 03 Screens (18:4)
+input_refs: [design/invitation-scheduler/interview.md, "U막 스크린샷 S01~S11 (사용자 승인 후 이 세션이 재캡처)"]
+output_refs: [design/invitation-scheduler/interview.md, "design/invitation-scheduler/.cache/interview-p1-transcript.txt", "design/invitation-scheduler/.cache/interview-p2-transcript.txt"]
+status: PASS
+blockers: []
+next_stage: build-screens
+```
+
+**LOCK-I** (2026-09-05, 사용자 승격):
+- 확정: FIX-01(brief.md C-2c 판정기준을 "색+텍스트 라벨로 구분"으로 정정) · FIX-02(S06 회신 매트릭스 구조 유지) · GAP-02~06 승격(U막 반영 확정) · GAP-01은 경미하여 기록만
+- 인터뷰 경로: ooo interview MCP 미연결 → 페르소나 시뮬레이션 Agent 2개(신규 컨텍스트)로 대체, "시뮬레이션"으로 명시
+- 근거: 사용자 응답 "6개 모두 승격하고 반영 (Recommended)" / "둘 다 승격 (Recommended)"
+
+```yaml
+stage: build-screens
+mode: improve
+project_id: invitation-scheduler
+run_id: 2026-09-05-r1
+revision: "1.4"
+producer: claude-session-this-turn
+target_ref: xMsSA6ndIWBXEANJ0Ycphf / 03 Screens (18:4)
+input_refs: [design/invitation-scheduler/interview.md#증류]
+output_refs:
+  - "S06(27:520) response-matrix member-row 미회신 강조색 danger-soft→waiting-soft (GAP-04)"
+  - "S11(28:1035) candidate-row에 toggle-status-label 텍스트 추가, '다른 요청과 같은 날'→'같은 날 · 겹침 확인' (GAP-05, GAP-06)"
+  - "S04(25:303) Banner/Alert body 텍스트 명확화 + '배정 방식 선택' field-label 추가 (GAP-02)"
+  - "S07(27:591) action-row를 rank-list 뒤로 재배치 (GAP-03)"
+status: PASS
+blockers: ["독립 reviewer Agent의 정식 A/C/V 검증 아직 미실시(이 세션 자체 스크린샷 육안 확인만)", "A-4 재사용률 산식 REUSE-A 기준 하한 70% 재확인 필요(실측 42.6%)"]
+next_stage: verify-A
+```
+
 ## 라운드 1 미해결 결정 ① 해소 (2026-09-05, 이 세션)
 
 **제출본 파일 결정**: `xMsSA6ndIWBXEANJ0Ycphf` (Designthon-Figma-1)로 확정. 사용자가 세션 중간에 이 URL을 직접 제시하며 "지금 피그마 …로 올라가고 있는 거 맞는지 확인"이라고 물었고, 실제로는 그때까지 `ZVyw1SdDMqtHemggKOAbgd`에 작업 중이었음을 확인 → 사용자가 "xMsSA…로 이사(Recommended)"를 선택. `ZVyw…`는 참고용 1차 제작본으로 남긴다(위 라운드 1 로그가 그 파일 기준 상세 검증 결과다).

@@ -34,7 +34,9 @@ C단계에서 탈락하면 원인에 따라 세 갈래로 라우팅한다 — �
 ## 구조
 
 ```
-.claude/skills/oss-design-harness/SKILL.md   # 코어 — 모드·게이트·0/B/제작/A/C/V·GATE·라우팅 (절차의 유일 원본)
+.claude/skills/oss-design-harness/SKILL.md   # 라우터 — 절대 규칙·모드·게이트·라우팅·상한
+.claude/skills/oss-design-harness/references/ # 방법론 13파일 (dev + feat/yj1 + iceberg 합병) — 프로젝트 값 없음
+.claude/skills/design-verify/SKILL.md         # "검증해줘" 얇은 진입점
 .claude/skills/wedding-scheduler-figma/       # 청첩장 과제 래퍼 (값 없음, project.json·원장 참조)
 templates/brief.md                            # 원장 양식 (소스 5종, A 기준값 YAML, 검증 방식 기록)
 templates/decisions.md                        # append 전용 라운드·검증 로그·GATE 블록
@@ -49,6 +51,10 @@ docs/PLAN-merge-feat-yj1.md                   # feat/yj1 하네스 합병 계획
 docs/concept.md                               # 컨셉 스펙 전문
 AGENTS.md / docs/team-playbook.md / docs/figma-mcp.md   # 에이전트 계약·팀 운영·MCP 실측
 ```
+
+### 층 분리 규칙 (feat/yj1에서 이식)
+
+`references/`는 **"무엇을 어떻게 판단하는가"(방법)**만 담고, `design/<id>/`는 **"이 프로젝트에서 그 값이 얼마인가"**를 담는다. 방법론 파일에 특정 프로젝트의 답(색상 값, 화면 목록, 결정 결과)을 쓰면 다음 프로젝트가 그 답을 그대로 베낀다 — 검사기가 `domain_terms`로 잡는다.
 
 ## 사용법
 
