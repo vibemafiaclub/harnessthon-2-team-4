@@ -45,6 +45,7 @@ scripts/harness/check_contracts.py            # target 단일 원장·기준값 
 docs/projects/<id>/project.json               # 프로젝트 진입점 (경로만, target 복제 금지)
 docs/harness-lessons.md                       # 재현된 실패 → 범용 규칙 → 반영 위치
 docs/PLAN-design-harness.md                   # 다음 단계(P1~P3) 계획
+docs/PLAN-merge-feat-yj1.md                   # feat/yj1 하네스 합병 계획(시너지·충돌·P0~P5)
 docs/concept.md                               # 컨셉 스펙 전문
 AGENTS.md / docs/team-playbook.md / docs/figma-mcp.md   # 에이전트 계약·팀 운영·MCP 실측
 ```

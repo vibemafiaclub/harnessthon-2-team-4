@@ -3,8 +3,8 @@
 > 진행 스킬: **ooo interview** (Ouroboros 0.51.14, 어댑터 `docs/integrations/ooo-interview.md`). 경로: MCP 연결 시 A, 아니면 CLI `ooo interview` B. ooo session_id: (미실시)
 > 되묻기: 첫 반응은 라벨. 같은 축 유사 변형 2~3개로 다시 찔러본다.
 
-> 상태: **준비됨, 미실시.** W 화면 11개가 `xMsSA6ndIWBXEANJ0Ycphf` / `W Wireframes` 페이지에 있다. 각 화면 notes에 질문 2~3개가 적혀 있다.
-> 이 파일이 GATE `stage: interview` PASS가 되기 전에는 U막(03 Screens) 수정을 시작하지 않는다 — 단, 이 프로젝트는 3막 도입 전에 U를 먼저 만들었으므로 기존 U는 유지하고 "인터뷰 결과로 바뀌는 부분만" 고친다.
+> 상태: **실시됨 (2026-09-05, 시뮬레이션 경로).** ooo interview MCP 미연결로 프로젝트 설정의 "경로 B"(수동 폴백)로 대체 — 실제 사람 대신 **페르소나 시뮬레이션 Agent 2개**(신규 컨텍스트, fork 아님)가 U막(03 Screens, `xMsSA6ndIWBXEANJ0Ycphf`) 최종 스크린샷을 보고 시나리오 과제를 수행했다. W 화면이 아니라 U 화면으로 진행한 이유: 이 프로젝트는 3막 도입 전에 U를 먼저 완성했고, W는 U에서 역추출한 것이라 실질적 정보량이 U와 동일하거나 U가 더 완성도 높다 — onboarding.md O-3에 이미 사람이 승인한 방향("기존 U는 유지, 인터뷰 결과로 바뀌는 부분만 고친다").
+> **시뮬레이션 한계**: 실제 사람 인터뷰가 아니므로 아래 GAP은 전부 후보이며, 사람 승격 전까지 U막에 반영하지 않는다.
 
 ## 대상 (project.json interview.audiences)
 

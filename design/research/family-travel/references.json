@@ -29,15 +29,15 @@
           "evidence_ids": [
             "E-01"
           ],
-          "review": "UNVERIFIED"
+          "review": "SUPPORTED"
         }
       ],
       "review": {
         "collector": "root",
-        "reviewer": null,
-        "status": "not-reviewed",
-        "report_path": null,
-        "isolation": null
+        "reviewer": "/root/family_travel_evidence",
+        "status": "reviewed",
+        "report_path": "evidence-review.md",
+        "isolation": "프롬프트 지시만"
       },
       "recommendation": {
         "decision": "adopt",
@@ -49,7 +49,10 @@
         "reason_verbatim": null,
         "scope": null
       },
-      "patterns": []
+      "patterns": [
+        "P01",
+        "P02"
+      ]
     },
     {
       "reference_id": "REF-FW-02",
@@ -97,7 +100,9 @@
         "reason_verbatim": null,
         "scope": null
       },
-      "patterns": []
+      "patterns": [
+        "P08"
+      ]
     },
     {
       "reference_id": "REF-CZ-01",
@@ -125,15 +130,15 @@
           "evidence_ids": [
             "E-03"
           ],
-          "review": "UNVERIFIED"
+          "review": "SUPPORTED"
         }
       ],
       "review": {
         "collector": "root",
-        "reviewer": null,
-        "status": "not-reviewed",
-        "report_path": null,
-        "isolation": null
+        "reviewer": "/root/family_travel_evidence",
+        "status": "reviewed",
+        "report_path": "evidence-review.md",
+        "isolation": "프롬프트 지시만"
       },
       "recommendation": {
         "decision": "adopt",
@@ -145,7 +150,9 @@
         "reason_verbatim": null,
         "scope": null
       },
-      "patterns": []
+      "patterns": [
+        "P01"
+      ]
     },
     {
       "reference_id": "REF-CZ-02",
@@ -173,15 +180,15 @@
           "evidence_ids": [
             "E-04"
           ],
-          "review": "UNVERIFIED"
+          "review": "SUPPORTED"
         }
       ],
       "review": {
         "collector": "root",
-        "reviewer": null,
-        "status": "not-reviewed",
-        "report_path": null,
-        "isolation": null
+        "reviewer": "/root/family_travel_evidence",
+        "status": "reviewed",
+        "report_path": "evidence-review.md",
+        "isolation": "프롬프트 지시만"
       },
       "recommendation": {
         "decision": "adopt",
@@ -193,7 +200,9 @@
         "reason_verbatim": null,
         "scope": null
       },
-      "patterns": []
+      "patterns": [
+        "P03"
+      ]
     },
     {
       "reference_id": "REF-CZ-03",
@@ -241,7 +250,9 @@
         "reason_verbatim": null,
         "scope": null
       },
-      "patterns": []
+      "patterns": [
+        "P02"
+      ]
     },
     {
       "reference_id": "REF-TT-01",
@@ -269,15 +280,15 @@
           "evidence_ids": [
             "E-06"
           ],
-          "review": "UNVERIFIED"
+          "review": "SUPPORTED"
         }
       ],
       "review": {
         "collector": "root",
-        "reviewer": null,
-        "status": "not-reviewed",
-        "report_path": null,
-        "isolation": null
+        "reviewer": "/root/family_travel_evidence",
+        "status": "reviewed",
+        "report_path": "evidence-review.md",
+        "isolation": "프롬프트 지시만"
       },
       "recommendation": {
         "decision": "adopt",
@@ -289,7 +300,9 @@
         "reason_verbatim": null,
         "scope": null
       },
-      "patterns": []
+      "patterns": [
+        "P08"
+      ]
     },
     {
       "reference_id": "REF-TT-02",
@@ -317,15 +330,15 @@
           "evidence_ids": [
             "E-07"
           ],
-          "review": "UNVERIFIED"
+          "review": "SUPPORTED"
         }
       ],
       "review": {
         "collector": "root",
-        "reviewer": null,
-        "status": "not-reviewed",
-        "report_path": null,
-        "isolation": null
+        "reviewer": "/root/family_travel_evidence",
+        "status": "reviewed",
+        "report_path": "evidence-review.md",
+        "isolation": "프롬프트 지시만"
       },
       "recommendation": {
         "decision": "adopt",
@@ -337,7 +350,9 @@
         "reason_verbatim": null,
         "scope": null
       },
-      "patterns": []
+      "patterns": [
+        "P04"
+      ]
     },
     {
       "reference_id": "REF-WL-01",
@@ -365,15 +380,15 @@
           "evidence_ids": [
             "E-08"
           ],
-          "review": "UNVERIFIED"
+          "review": "SUPPORTED"
         }
       ],
       "review": {
         "collector": "root",
-        "reviewer": null,
-        "status": "not-reviewed",
-        "report_path": null,
-        "isolation": null
+        "reviewer": "/root/family_travel_evidence",
+        "status": "reviewed",
+        "report_path": "evidence-review.md",
+        "isolation": "프롬프트 지시만"
       },
       "recommendation": {
         "decision": "adopt",
@@ -385,7 +400,10 @@
         "reason_verbatim": null,
         "scope": null
       },
-      "patterns": []
+      "patterns": [
+        "P01",
+        "P05"
+      ]
     },
     {
       "reference_id": "REF-WL-02",
@@ -413,15 +431,15 @@
           "evidence_ids": [
             "E-09"
           ],
-          "review": "UNVERIFIED"
+          "review": "SUPPORTED"
         }
       ],
       "review": {
         "collector": "root",
-        "reviewer": null,
-        "status": "not-reviewed",
-        "report_path": null,
-        "isolation": null
+        "reviewer": "/root/family_travel_evidence",
+        "status": "reviewed",
+        "report_path": "evidence-review.md",
+        "isolation": "프롬프트 지시만"
       },
       "recommendation": {
         "decision": "adopt",
@@ -433,7 +451,9 @@
         "reason_verbatim": null,
         "scope": null
       },
-      "patterns": []
+      "patterns": [
+        "P05"
+      ]
     },
     {
       "reference_id": "REF-WL-03",
@@ -461,15 +481,15 @@
           "evidence_ids": [
             "E-10"
           ],
-          "review": "UNVERIFIED"
+          "review": "SUPPORTED"
         }
       ],
       "review": {
         "collector": "root",
-        "reviewer": null,
-        "status": "not-reviewed",
-        "report_path": null,
-        "isolation": null
+        "reviewer": "/root/family_travel_evidence",
+        "status": "reviewed",
+        "report_path": "evidence-review.md",
+        "isolation": "프롬프트 지시만"
       },
       "recommendation": {
         "decision": "adopt",
@@ -481,7 +501,9 @@
         "reason_verbatim": null,
         "scope": null
       },
-      "patterns": []
+      "patterns": [
+        "P07"
+      ]
     },
     {
       "reference_id": "REF-WL-04",
@@ -529,7 +551,9 @@
         "reason_verbatim": null,
         "scope": null
       },
-      "patterns": []
+      "patterns": [
+        "P03"
+      ]
     },
     {
       "reference_id": "REF-TI-01",
@@ -557,15 +581,15 @@
           "evidence_ids": [
             "E-12"
           ],
-          "review": "UNVERIFIED"
+          "review": "SUPPORTED"
         }
       ],
       "review": {
         "collector": "root",
-        "reviewer": null,
-        "status": "not-reviewed",
-        "report_path": null,
-        "isolation": null
+        "reviewer": "/root/family_travel_evidence",
+        "status": "reviewed",
+        "report_path": "evidence-review.md",
+        "isolation": "프롬프트 지시만"
       },
       "recommendation": {
         "decision": "adopt",
@@ -577,7 +601,9 @@
         "reason_verbatim": null,
         "scope": null
       },
-      "patterns": []
+      "patterns": [
+        "P06"
+      ]
     }
   ]
 }
