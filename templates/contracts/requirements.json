@@ -1,0 +1,37 @@
+{
+  "$comment": "요구 계약 양식 — PRD 원문 위치 → REQ → 화면/상태 매핑. V단계(V-1/V-2/V-4)의 입력. 프로젝트별 사본은 design/<project-id>/contracts/requirements.json. 값은 전부 예시 자리표시자다.",
+  "schema_version": 1,
+  "project_id": "<project-id>",
+  "prd_path": "docs/<...>/prd.md",
+  "prd_hash": "<sha256 of prd file>",
+  "requirements": [
+    {
+      "id": "REQ-01",
+      "prd_ref": "§4-1",
+      "text_verbatim": "<PRD 원문 그대로>",
+      "kind": "feature",
+      "screens": ["SCR-01"],
+      "states": [],
+      "status": "confirmed",
+      "source_kind": "사람-원문"
+    }
+  ],
+  "tricky_cases": [
+    {
+      "id": "CASE-01",
+      "prd_ref": "§3",
+      "text_verbatim": "<PRD 원문 그대로>",
+      "must_appear_in": ["SCR-02"],
+      "evidence_nodes": []
+    }
+  ],
+  "states": [
+    { "id": "STATE-01", "code": "<enum value>", "label": "<표시 라벨>", "source_kind": "사람-원문|사람-해석", "must_appear": true }
+  ],
+  "screens": [
+    { "id": "SCR-01", "name": "<Sxx 화면명>", "purpose": "", "entry_from": [], "primary_cta_to": "SCR-02", "node_id": null, "assumption_ref": null }
+  ],
+  "assumptions": [
+    { "id": "ASM-01", "text": "", "chosen_by": "사용자|에이전트", "needs_confirmation": "high|medium|low" }
+  ]
+}

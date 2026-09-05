@@ -5,13 +5,15 @@
 VIBE MAFIA CLUB 하네스톤 2회차(2026-09-05)를 계기로 이너서클 코파운더들과 함께 만드는 오픈소스 프로젝트입니다.
 지향점: `ui-ux-pro-max` 급, 현업에서 쓸 수 있는 수준의 skill.
 
-## 이 레포의 상태
+## 이 레포의 상태 (2026-09-05)
 
-**완전 빈 템플릿입니다.** 뼈대(A/B/C/0 4단계 구조, 파일 포맷)만 있고, 실제 판단 기준 내용은 비어 있습니다.
+두 층이 함께 있습니다. 구분해서 읽으세요.
 
-- 판단 기준의 실제 내용(예: "무엇을 보고 고급스럽다고 판단하는가")은 **하네스톤 참가자·코파운더가 실제로 채워야** 의미가 있습니다.
-- 미리 채워서 예시로 주면, 참가자가 자기 안목을 꺼내는 대신 이미 있는 답을 검토하는 일이 되어 버려 원래 목적(다양한 디자이너의 독립적 안목 수집)이 오염됩니다.
-- 그래서 지금은 각 섹션에 `TODO`만 있고, 예시 2~3개만 남깁니다.
+- **코어(범용 절차)** — `.claude/skills/oss-design-harness/SKILL.md`, `templates/`, `scripts/harness/`. 게이트·모드·0/B/제작/A/C/V 단계·GATE 인수인계·라우팅·상한이 채워져 있습니다. **판단기준 값은 여전히 비어 있습니다(TODO)** — 그것은 프로젝트 원장에서 사람이 채웁니다. 코어에는 특정 프로젝트의 화면명·상태·색이 들어가면 안 되고, `scripts/harness/check_contracts.py`가 검사합니다.
+- **프로젝트(과제 산출물)** — `docs/projects/<id>/project.json`이 진입점입니다.
+  - `invitation-scheduler` 청첩장모임 스케줄러: `docs/prd.md` → `docs/screen-map.md` → `design/invitation-scheduler/`(원장·결정·검증 로그) → Figma 파일(원장 `brief.md` target 참조). 하네스톤 2회차 팀4 과제.
+  - `docs/backlog/saju/` 사주 풀이: **보류 중**(사용자 결정 2026-09-05). 리허설용 fixture PRD·도메인 메모·설정을 모아 두었고, 재개 시 `docs/projects/saju/`로 옮겨 검사기 대상에 넣습니다.
+- 배운 것은 `docs/harness-lessons.md`에, 다음 개선 계획은 `docs/PLAN-design-harness.md`에 있습니다.
 
 ## 프레임워크 — 4단계 판단 구조
 
@@ -31,18 +33,28 @@ C단계에서 탈락하면 원인에 따라 세 갈래로 라우팅한다 — �
 ## 구조
 
 ```
-.claude/skills/oss-design-harness/SKILL.md   # 하네스 본체 — 4단계 프롬프트 뼈대
-templates/brief.md                            # 0단계 산출물 양식
-templates/decisions.md                        # B단계 산출물 양식
-docs/concept.md                               # 컨셉 스펙 전문 (배경·경쟁 포지셔닝·논리 검증 과정)
+.claude/skills/oss-design-harness/SKILL.md   # 코어 — 모드·게이트·0/B/제작/A/C/V·GATE·라우팅 (절차의 유일 원본)
+.claude/skills/wedding-scheduler-figma/       # 청첩장 과제 래퍼 (값 없음, project.json·원장 참조)
+templates/brief.md                            # 원장 양식 (소스 5종, A 기준값 YAML, 검증 방식 기록)
+templates/decisions.md                        # append 전용 라운드·검증 로그·GATE 블록
+templates/contracts/                          # gate.yaml, requirements.json, components.json 양식
+templates/onboarding.md · interview.md        # O단계 온보딩 · I막 인터뷰 양식
+docs/integrations/ooo-interview.md            # Ouroboros ooo interview 어댑터(개념 매핑·실행 경로)
+scripts/harness/check_contracts.py            # target 단일 원장·기준값 TODO·도메인 누출·GATE 검사
+docs/projects/<id>/project.json               # 프로젝트 진입점 (경로만, target 복제 금지)
+docs/harness-lessons.md                       # 재현된 실패 → 범용 규칙 → 반영 위치
+docs/PLAN-design-harness.md                   # 다음 단계(P1~P3) 계획
+docs/concept.md                               # 컨셉 스펙 전문
+AGENTS.md / docs/team-playbook.md / docs/figma-mcp.md   # 에이전트 계약·팀 운영·MCP 실측
 ```
 
-## 사용법 (참가자용)
+## 사용법
 
-1. Figma 파일을 열고, 이 레포를 프로젝트 루트로 해서 Claude Code(또는 다른 코딩 에이전트)를 실행한다.
-2. `.claude/skills/oss-design-harness/SKILL.md`의 각 단계 `TODO`를 채워 넣는다 — 이게 당신의 판단기준을 코드화하는 작업이다.
-3. 0단계 결과는 `brief.md`, B단계 결과는 `decisions.md`에 남긴다 (템플릿을 프로젝트 폴더로 복사해서 사용).
-4. 완성된 SKILL.md는 팀/코파운더와 공유해 비교한다.
+1. `docs/projects/<id>/project.json`을 만들거나 고른다(PRD·원장 경로). `python scripts/harness/check_contracts.py <id>`로 ERROR 0을 확인한다.
+2. 이 레포를 루트로 Claude Code를 실행하고 `oss-design-harness` 스킬이 발동하게 한다. 모드(plan-only / build / review / improve)를 정한다.
+3. O단계 온보딩(`templates/onboarding.md`, 재진술 승인) → 게이트 G-1~G-4 → M 무드 → W 와이어프레임(HTML→Figma) → I 인터뷰(ooo interview) → 0단계(원장) → B(또는 스킵 사유) → 제작-L/S → A → C → V → 사람 최종 판단. 단계마다 `decisions.md`에 GATE 블록을 append 한다.
+4. 판단기준 `TODO`는 사람이 채운다. 에이전트가 채우면 그 순간 검증이 무너진다.
+5. 새 도메인은 project.json·PRD·원장·`_system`을 새로 만들고 코어는 그대로 쓴다.
 
 ## 라이선스
 

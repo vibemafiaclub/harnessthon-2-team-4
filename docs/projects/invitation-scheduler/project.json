@@ -1,0 +1,50 @@
+{
+  "$comment": "청첩장모임 스케줄러 — 현재 앱의 호환 설정. target(파일 URL·페이지)은 여기에 두지 않는다. 권위 있는 원장은 brief_path의 target 블록이다.",
+  "schema_version": 1,
+  "project_id": "invitation-scheduler",
+  "display_name": "청첩장모임 스케줄러",
+  "prd_path": "docs/prd.md",
+  "screen_map_path": "docs/screen-map.md",
+  "brief_path": "design/invitation-scheduler/brief.md",
+  "decisions_path": "design/invitation-scheduler/decisions.md",
+  "system_brief_path": "design/_system/brief.md",
+  "artifact_root": "design/invitation-scheduler",
+  "task_skill": ".claude/skills/wedding-scheduler-figma/SKILL.md",
+  "fixture_base_date": "2026-09-05",
+  "domain_terms": [
+    "신랑",
+    "신부",
+    "양가",
+    "groom",
+    "bride",
+    "청첩장",
+    "상견례",
+    "다녀옴",
+    "서지민",
+    "도윤",
+    "서연"
+  ],
+  "notes": "system_brief_path는 이 프로젝트 전용 디자인 시스템이다. 다른 프로젝트가 상속하지 않는다.",
+  "interview": {
+    "audiences": [
+      "예비부부(주 사용자, 커플 공용)",
+      "초대받는 지인(게스트 링크)"
+    ],
+    "min_per_audience": 1,
+    "log_path": "design/invitation-scheduler/interview.md",
+    "skill": "ooo-interview",
+    "skill_note": "Ouroboros ooo interview 0.51.14 (C:/Users/deepnoid/gpters24/ouroboros). MCP 미연결 시 CLI `ooo interview` 또는 수동 폴백",
+    "skill_doc": "docs/integrations/ooo-interview.md"
+  },
+  "process": {
+    "acts": [
+      "M",
+      "W",
+      "I",
+      "U"
+    ],
+    "wireframe_html_dir": "design/invitation-scheduler/wireframes-html",
+    "wireframe_page": "W Wireframes",
+    "ui_page": "03 Screens"
+  }
+}

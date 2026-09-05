@@ -1,0 +1,15 @@
+# 인수인계 GATE 블록 양식 — decisions.md 현재 라운드 끝에 append 한다 (SKILL.md 「인수인계 GATE」)
+# 다음 단계는 output_refs 실재 + target_ref == brief.md target 을 확인한 뒤에만 시작한다.
+schema_version: 1
+stage: TODO              # requirements | align | diverge | build-library | build-screens | verify-A | verify-C | verify-V | final
+mode: TODO               # plan-only | build | review | improve
+project_id: TODO         # docs/projects/<project-id>/project.json
+run_id: TODO             # 세션 시작 시 고정. improve 모드는 이전 run_id를 적고 라운드를 이어 쓴다
+revision: "1.0"          # 라운드.하위라운드
+producer: TODO           # 세션/에이전트 식별 — 검증 GATE의 producer가 제작 GATE와 같으면 무효
+target_ref: TODO         # brief.md target의 file_key + page (복제가 아니라 참조 확인용)
+input_refs: []           # 읽은 파일 경로 (+ 가능하면 해시)
+output_refs: []          # 만든 파일 경로 또는 Figma node ID
+status: TODO             # PASS | PARTIAL | FAIL | BLOCKED
+blockers: []             # 미해결 결정의 이름 (상태 서술 금지)
+next_stage: TODO

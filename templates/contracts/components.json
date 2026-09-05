@@ -1,0 +1,26 @@
+{
+  "$comment": "컴포넌트 계약 양식 — 제작-L 종료 시 실제 Figma ID를 채운다. 제작-S는 이 파일에 ID가 있는 컴포넌트만 인스턴스화한다. V-6의 입력.",
+  "schema_version": 1,
+  "project_id": "<project-id>",
+  "target_ref": "<file_key>/<components page id>",
+  "verified_by_independent_read": false,
+  "tokens": {
+    "collection_id": "VariableCollectionId:<...>",
+    "color_count": 0,
+    "space_count": 0,
+    "radius_count": 0,
+    "text_styles": []
+  },
+  "components": [
+    {
+      "id": "CMP-01",
+      "name": "<Category>/<Name>",
+      "figma_id": "<node id>",
+      "type": "COMPONENT_SET|COMPONENT",
+      "variants": ["prop=value"],
+      "required_states_ref": "brief.variants.required_states[n]",
+      "depends_on": ["CMP-00"],
+      "used_by_screens": []
+    }
+  ]
+}
