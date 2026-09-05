@@ -24,7 +24,8 @@ target:
   file_url: https://www.figma.com/design/xMsSA6ndIWBXEANJ0Ycphf
   file_key: xMsSA6ndIWBXEANJ0Ycphf
   page: "03 Screens"
-  frame: "S01 ~ S11 (신규 제작)"
+  frame: "S01 ~ S11 (신규 제작) + S00 온보딩(D6 승인, 1.4 추가 예정) + S12 게스트 제출 완료"
+  submission: xMsSA6ndIWBXEANJ0Ycphf   # D8(2026-09-05) 사용자 결정: 제출본 = 이 파일. 미해결 결정 '제출본 파일' 해소
   backup: https://www.figma.com/design/ZVyw1SdDMqtHemggKOAbgd  # 1차 제작본(에이전트 생성, A/C 검증 거침)
   runs:
     yj1: https://www.figma.com/design/dqTi2Vo9EDHvTFmackbRQ0/  # feat/yj1 브랜치 run (design/invitation-scheduler/runs/yj1/), 로즈 팔레트, 온보딩 3화면 포함
@@ -49,6 +50,7 @@ target:
 | 시각 | C-5 | 익숙한 UI 패턴을 이 서비스 맥락(청첩장·예비부부·양가)에 맞게 다듬어 썼는가 — 범용 대시보드 템플릿처럼 보이면 탈락 | 확정 | 사람 | PRD 「디자인 완성도」 원문 |
 | 시각 | C-2 | 시각적 디테일로 화면을 마무리했는가 — 미완성 플레이스홀더·잘린 텍스트가 보이면 탈락 | 확정 | 사람 | PRD 원문 "시각적 디테일로 화면을 마무리했는지" |
 | 구조 | C-2c | 신랑 측/신부 측/양가가 **색과 텍스트 라벨(Tag/Side, Avatar 이니셜)로 함께** 구분되어, 색 인지 여부와 무관하게 식별 가능해야 한다 | **확정 (2026-09-05, I막 FIX-01 승격)** | 사람-해석 → I막 시뮬레이션 인터뷰로 검증 후 사람 승격 | PRD §3 원문은 "구분이 필요하다"는 요구이지 "색으로만" 구분한다는 요구가 아님. I막 시뮬레이션(P1·S09 워크스루)에서 "색은 보조 수단, 텍스트 라벨이 항상 병행되어 흑백에서도 식별 가능"이 확인되어 이 표현으로 정정·승격. 구 표현("항상 색으로 구분") 폐기 |
+| 시각 | C-4 | 목록의 모든 항목에 상태 라벨이 붙어 있으면 실패 — 정상·기본 상태는 무표시, 예외(미회신·마감 임박)만 표시. 실패선: 한 목록에서 라벨 부착 비율 100% | **확정 (2026-09-05, D7 승격)** | 사람-원문 | 사용자 AskUserQuestion 답 원문: "(a) 목록의 모든 항목에 상태 라벨을 붙이면 실패" 선택 (제시 설명: 참석자 5명 전원에 '회신 완료/대기' 표시 → 급한 2명이 묻힘). 렌즈 출처 yj1 verify-log #10(원문 미보존). (b) 사용자 언어·(c) 반복 요소 메인 색 금지는 **미선택 → 후보 유지** |
 | 시각 | C-1 | 전 화면이 같은 웜톤 아이보리 캔버스 위에 있어야 하며, 화면 간 배경 색온도가 달라 보이면 탈락 | 후보 | 가정(위임) | 가정 #A3 — 디자이너 승격 필요 |
 | 시각 | C-3 | 카드 내부 16, 카드 간 12, 섹션 간 24의 리듬이 체감상 일정해야 한다 | 후보 | 가정(위임) | 가정 #A3 |
 | 시각 | C-4 | 한 화면에서 1차 정보(날짜·상태·인원)가 먼저 읽혀야 하고, 리스트 한 행이 3줄을 넘지 않아야 한다 | 후보 | 가정(위임) | 가정 #A3 |
@@ -145,12 +147,23 @@ tokens:
     grid: 4             # A-3
 
 thresholds:
-  component_reuse_min: 0.70   # A-4. 사람 확정 2026-09-05: 70%
-  component_reuse_formula: REUSE-A   # 인스턴스 / (프레임+텍스트+인스턴스, 인스턴스 내부·벡터 제외). 실측 1.1=0.411, 1.2=0.449
-  component_reuse_approval: "사용자 2026-09-05 — 산식 미명시 상태에서 70% 승인. REUSE-A 기준으로 70%가 의도인지 재확인 필요(미해결 결정: 'A-4 산식·하한 재확인')"
+  component_reuse_min: TODO   # A-4. D5(2026-09-05 오후) 사용자 결정: 산식을 REUSE-B로 바꾸고 하한은 다음 실측 후 새로 정한다 → 그때까지 SKIP
+  component_reuse_formula: REUSE-B   # 반복 UI 패턴(이름 기준 2회 이상 등장하는 프레임+인스턴스) 중 인스턴스 비율. 레이아웃 래퍼(content/*-row/*-col)·본문 텍스트는 분모에서 제외. 구 REUSE-A 70%는 기준 정정 기록 참조(실측 0.411/0.449/0.432)
+  component_reuse_approval: "사용자 2026-09-05 — REUSE-A 70% 폐기, REUSE-B 채택. 하한은 1.4 실측값을 보고 사람이 정한다(미해결 결정: 'A-4 REUSE-B 하한')"
+  component_reuse_formula_history: ["REUSE-A 0.70 (사용자 승인 2026-09-05 오전, 산식 미명시) → 3회 연속 미달 후 폐기"]
 
 layout:
-  scroll_containers: []       # 선언된 가로 스크롤 컨테이너 없음 → S10 status-tabs는 2줄 wrap으로 수정(1.1)
+  scroll_containers: []       # 선언된 가로 스크롤 컨테이너 없음 → S10 status-tabs는 2줄 wrap으로 수정(1.1). 세로 카드 리스트(S09·S10)는 844 안에 수용(카드 ≤3) 또는 여기 선언 후 A-0 예외 — 1.4에서 결정
+  grid_exceptions:            # D2(2026-09-05) 사용자 결정: 아이콘·점 표식 내부 간격은 2px 허용
+    - { scope: "Calendar/Day marks row 및 아이콘·점 표식 내부", value: 2, approved_by: "사용자 2026-09-05", reason: "6px 점 사이 2px가 시각적으로 맞는 값. 60건이 한 곳 집중 → 기준 정정" }
+
+copy:                       # A-7 문구 기호 정책 — D3(2026-09-05) 사용자 결정
+  allowed_symbols: ["/ (날짜 표기 9/12(토)에만)"]
+  forbidden_symbols: ["· 가운뎃점(구분 용도)", "/ 분수·비율(3/5 → '5명 중 3명')", "— – 대시", "기호 단독 텍스트 아이콘(– 등 → 아이콘 인스턴스)"]
+  fix_direction: "말로 풀기 또는 줄바꿈·간격으로 나누기"
+
+text_color_usage:           # D4(2026-09-05) 사용자 결정: 토큰 값은 유지, 배정 규칙으로 해소
+  tertiary_min_font_size: 15  # color/text/tertiary(#78706A)는 15px 이상(대비 4.03~4.40 → 큰 텍스트 취급 불가하므로 실제로는 18px+ Medium 이상에서만 AA) — 12~14px 라벨(요일·카운트·비선택 세그먼트·'미확인'·pending)은 color/text/secondary(#6B6259) 사용
 
 naming:
   convention: "화면 프레임 `S<nn> <한글명>`; 컴포넌트 `<Category>/<Name>`; 내부 레이어 영문 kebab-case 역할명; 자동 기본명 금지"
