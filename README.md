@@ -31,17 +31,32 @@ C단계에서 탈락하면 원인에 따라 세 갈래로 라우팅한다 — �
 ## 구조
 
 ```
-.claude/skills/oss-design-harness/SKILL.md   # 하네스 본체 — 4단계 프롬프트 뼈대
-templates/brief.md                            # 0단계 산출물 양식
-templates/decisions.md                        # B단계 산출물 양식
-docs/concept.md                               # 컨셉 스펙 전문 (배경·경쟁 포지셔닝·논리 검증 과정)
+.claude/skills/oss-design-harness/       # 0→B→제작 오케스트레이터
+  SKILL.md                                 # 뼈대 — 단계 진입조건·라우팅
+  references/                              # 방법론 (프로젝트 무관, 재사용)
+  templates/brief.md                       # 0단계 산출물 양식
+  templates/decisions.md                   # B단계 산출물 양식
+.claude/skills/design-verify/            # A/C 검증 + 실패 라우팅
+  SKILL.md
+  references/                              # 판단 방법 (프로젝트 무관, 재사용)
+projects/<슬러그>/                        # 프로젝트별 값 — 하네스 파일에 섞지 않는다
+  brief.md        # 0단계 산출물 (레퍼런스·역추출 기준·가정·토큰)
+  decisions.md    # B단계 산출물 (축·후보·선택 근거)
+  criteria.md     # A/C단계 이 프로젝트의 합격선
+  build-plan.md   # 제작 순서·화면 목록
+docs/concept.md                          # 컨셉 스펙 전문 (배경·경쟁 포지셔닝·논리 검증 과정)
 ```
+
+### 층 분리 규칙 (중요)
+
+`references/`는 **"무엇을 어떻게 판단하는가"(방법)**만 담고, `projects/<슬러그>/`는 **"이 프로젝트에서 그 값이 얼마인가"**를 담는다.
+방법론 파일에 특정 프로젝트의 답(색상 값, 화면 목록, 결정 결과)을 쓰면 다음 프로젝트가 그 답을 그대로 베낀다 — 위 "미리 채우면 오염된다" 원칙이 깨진다.
 
 ## 사용법 (참가자용)
 
 1. Figma 파일을 열고, 이 레포를 프로젝트 루트로 해서 Claude Code(또는 다른 코딩 에이전트)를 실행한다.
 2. `.claude/skills/oss-design-harness/SKILL.md`의 각 단계 `TODO`를 채워 넣는다 — 이게 당신의 판단기준을 코드화하는 작업이다.
-3. 0단계 결과는 `brief.md`, B단계 결과는 `decisions.md`에 남긴다 (템플릿을 프로젝트 폴더로 복사해서 사용).
+3. 단계 산출물은 `projects/<슬러그>/` 아래에 남긴다 — `.claude/skills/oss-design-harness/templates/`의 양식을 복사해서 사용.
 4. 완성된 SKILL.md는 팀/코파운더와 공유해 비교한다.
 
 ## 라이선스
